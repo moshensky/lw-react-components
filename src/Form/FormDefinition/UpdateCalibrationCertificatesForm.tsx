@@ -3,18 +3,7 @@ import { requiredValidator } from '../common-validators'
 import React from 'react'
 import { GuidGenerationService } from '../../utils'
 import { Card, CardBody } from '../../Card'
-
-type TechnicalToolData = {
-  calibrationCertificates: ReadonlyArray<{
-    id: string
-    certificateNumber: string
-    isActive: boolean
-    measurementDeviations: ReadonlyArray<{
-      order: number
-      deviation: number
-    }>
-  }>
-}
+import { TechnicalToolData } from './data.support.test'
 
 type Props = Readonly<{
   technicalToolData: TechnicalToolData

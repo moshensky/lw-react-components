@@ -1,20 +1,15 @@
-import { TechnicalToolModel } from '@limsnow/core-domain'
-import {
-  Button,
-  Card,
-  CardBody,
-  FormDefinition,
-  LWForm,
-  requiredValidator,
-} from 'components'
+import { LWForm } from './types'
+import { FormDefinition } from './FormDefinition'
+import { requiredValidator } from '../common-validators'
+import { Button } from '../../Buttons'
+import { Card, CardBody } from '../../Card'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { mdiClose, mdiMagnify } from '@mdi/js'
 import {
   FetchTechnicalToolsWorkLoadReportPayload,
-  initState,
-} from 'redux-store/reducers/technical-tools'
-import { mc } from 'intl'
-import { mdiClose, mdiMagnify } from '@mdi/js'
+  TechnicalToolModel,
+  workLoadReportingFilter,
+} from './data.support.test'
 
 type Props = Readonly<{
   filterModel: FetchTechnicalToolsWorkLoadReportPayload
@@ -26,7 +21,7 @@ type Props = Readonly<{
 export function RowSample({ filterModel, onFilter, technicalTools, onResetFilter }: Props) {
   const formDefinition: LWForm<FetchTechnicalToolsWorkLoadReportPayload> = {
     model: filterModel,
-    mkEmpty: () => initState().workLoadReportingFilter,
+    mkEmpty: () => workLoadReportingFilter,
     viewType: 'row',
     renderButtons: () => (
       <>
@@ -35,30 +30,24 @@ export function RowSample({ filterModel, onFilter, technicalTools, onResetFilter
           outline
           onClick={onResetFilter}
           variant="secondary"
-          label={<FormattedMessage {...mc.resetFilters} />}
+          label="Reset filters"
           icon={mdiClose}
         />
-        <Button
-          type="submit"
-          className="ml-1"
-          variant="primary"
-          label={<FormattedMessage {...mc.filter} />}
-          icon={mdiMagnify}
-        />
+        <Button type="submit" className="ml-1" variant="primary" label="Filter" icon={mdiMagnify} />
       </>
     ),
     items: [
       {
         name: 'fromDate',
         type: 'DateField',
-        label: <FormattedMessage {...mc.fromDate} />,
+        label: 'From Date',
         required: true,
         validate: requiredValidator,
       },
       {
         name: 'toDate',
         type: 'TextField',
-        label: <FormattedMessage {...mc.toDate} />,
+        label: 'To Date',
         required: true,
         validate: requiredValidator,
       },
@@ -79,9 +68,7 @@ export function RowSample({ filterModel, onFilter, technicalTools, onResetFilter
   return (
     <Card>
       <CardBody>
-        <h5>
-          <FormattedMessage {...mc.filter} />
-        </h5>
+        <h5>Filter</h5>
         <FormDefinition formDefinition={formDefinition} onSave={onFilter} />
       </CardBody>
     </Card>

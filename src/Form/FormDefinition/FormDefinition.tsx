@@ -1,31 +1,23 @@
-import {
-  ArrayValidations,
-  Bool,
-  BoolWithAll,
-  Button,
-  DateField,
-  DateTimeField,
-  IdWithName,
-  TextField,
-  validate,
-  Validator,
-  VirtualizedSelect,
-  RadioGroup,
-  TagsSelect,
-  MultiSelect,
-  RichTextField,
-} from 'components'
+import { Bool } from '../Bool'
+import { BoolWithAll } from '../BoolWithAll'
+import { DateField, DateTimeField } from '../DateTimeFields'
+import { MultiSelect } from '../MultiSelect'
+import { RadioGroup } from '../RadioGroup'
+import { RichTextField } from '../RichTextField'
+import { TagsSelect } from '../TagsSelect'
+import { TextField } from '../TextField'
+import { VirtualizedSelect } from '../VirtualizedSelect'
 import { FormApi } from 'final-form'
 import arrayMutators from 'final-form-arrays'
-import { isNil, not } from '@limsnow/utils'
+import { isNil, not } from '../../utils'
 import React from 'react'
 import { Form } from 'react-final-form'
-import { FormattedMessage } from 'react-intl'
-import { mc } from 'intl'
 import { ArrayFormControl } from './ArrayFormControl'
-import { FormControl, LWForm, LWFormItemValidate, ViewType } from './types'
+import { FormControl, IdWithName, LWForm, LWFormItemValidate, ViewType } from './types'
 import { SelectField } from '../SelectField'
 import { mdiContentSaveOutline, mdiPlusThick } from '@mdi/js'
+import { ArrayValidations, validate, Validator } from '../validate'
+import { Button } from '../../Buttons'
 
 const itemToString = (item: IdWithName | null) => {
   return item ? item.name : ''
@@ -293,6 +285,8 @@ function toValidations<T>(items: ReadonlyArray<FormControl<T>>) {
 }
 
 type Props<T> = Readonly<{
+  createLabel?: React.ReactNode
+  saveLabel?: React.ReactNode
   disablePristine?: boolean
   formDefinition: LWForm<T>
   onSave: (model: T, isNew: boolean) => void
@@ -309,7 +303,14 @@ type Props<T> = Readonly<{
   ) => React.ReactNode
 }>
 
-export function FormDefinition<T>({ disablePristine, formDefinition, render, onSave }: Props<T>) {
+export function FormDefinition<T>({
+  createLabel,
+  saveLabel,
+  disablePristine,
+  formDefinition,
+  render,
+  onSave,
+}: Props<T>) {
   const { items, renderButtons, viewType, model, mkEmpty } = formDefinition
   const isNew = isNil(model)
 
@@ -407,7 +408,7 @@ export function FormDefinition<T>({ disablePristine, formDefinition, render, onS
                 type="submit"
                 disabled={submitting || disablePristine ? false : pristine}
                 variant="success"
-                label={<FormattedMessage {...(isNew ? mc.create : mc.save)} />}
+                label={isNew ? createLabel || 'Create' : saveLabel || 'Save'}
                 icon={isNew ? mdiPlusThick : mdiContentSaveOutline}
               />
             )}

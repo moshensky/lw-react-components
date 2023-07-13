@@ -5,14 +5,13 @@ import { technicalTools } from 'components/appViews/Administration/TechnicalTool
 import React from 'react'
 import { initState } from 'redux-store/reducers/technical-tools'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { ColumnSample } from './ColumnSample'
 import { RowSample } from './RowSample'
 import { UpdateCalibrationCertificatesForm } from './UpdateCalibrationCertificatesForm'
 import { LWForm, LabelWithValue } from './types'
 import { passwordValidator, requiredValidator } from '../common-validators'
 import { FormDefinition } from './FormDefinition'
-import { range } from '@limsnow/utils'
+import { range } from '../../utils'
 import { MultiselectOptions } from '../../MultiSelect'
 
 const calibrationCertificates: ReadonlyArray<CalibrationCertificate> = range(1, 4).map((x) => ({
@@ -28,8 +27,6 @@ const calibrationCertificates: ReadonlyArray<CalibrationCertificate> = range(1, 
 }))
 
 storiesOf('common/Form/FormDefinition', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 500 }))
   .add('Row', () => (
     <RowSample
