@@ -1,9 +1,7 @@
-import { CalibrationCertificate, RichText } from '@limsnow/core-domain'
+import { RichText } from '../../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { technicalTools } from 'components/appViews/Administration/TechnicalTools/TechnicalTools.stories'
 import React from 'react'
-import { initState } from 'redux-store/reducers/technical-tools'
 import host from 'storybook-host'
 import { ColumnSample } from './ColumnSample'
 import { RowSample } from './RowSample'
@@ -13,6 +11,11 @@ import { passwordValidator, requiredValidator } from '../common-validators'
 import { FormDefinition } from './FormDefinition'
 import { range } from '../../utils'
 import { MultiselectOptions } from '../../MultiSelect'
+import {
+  CalibrationCertificate,
+  technicalTools,
+  workLoadReportingFilter,
+} from './data.support.test'
 
 const calibrationCertificates: ReadonlyArray<CalibrationCertificate> = range(1, 4).map((x) => ({
   id: `guid-${x}`,
@@ -33,7 +36,7 @@ storiesOf('common/Form/FormDefinition', module)
       onFilter={action('on save')}
       technicalTools={technicalTools}
       filterModel={{
-        ...initState().workLoadReportingFilter,
+        ...workLoadReportingFilter,
         fromDate: new Date('2011-11-29T10:34:44Z'),
         toDate: new Date('2011-11-29T14:34:44Z'),
       }}
@@ -45,7 +48,7 @@ storiesOf('common/Form/FormDefinition', module)
       onFilter={action('on save')}
       technicalTools={technicalTools}
       filterModel={{
-        ...initState().workLoadReportingFilter,
+        ...workLoadReportingFilter,
         fromDate: new Date('2011-11-29T10:34:44Z'),
         toDate: new Date('2011-11-29T14:34:44Z'),
       }}
@@ -73,7 +76,6 @@ const idWithNames: ReadonlyArray<LabelWithValue> = [
 ]
 
 storiesOf('common/Form/FormDefinition/FormControl', module)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 500 }))
   .add('RadioGroup', () => {
     const formDefinition: LWForm<{ someTestId: number }> = {
