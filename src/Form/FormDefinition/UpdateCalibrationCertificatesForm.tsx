@@ -1,10 +1,21 @@
-import { TechnicalToolData } from '@limsnow/core-domain'
-import { FormDefinition, LWForm, requiredValidator } from 'components'
+import { FormDefinition, LWForm } from '../FormDefinition'
+import { requiredValidator } from '../common-validators'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { GuidGenerationService } from '@limsnow/utils'
-import { mc } from 'intl'
-import { Card, CardBody } from 'components/Card'
+import { GuidGenerationService } from '../../utils'
+import { Card, CardBody } from '../../Card'
+
+type TechnicalToolData = {
+  calibrationCertificates: ReadonlyArray<{
+    id: string
+    certificateNumber: string
+    isActive: boolean
+    measurementDeviations: ReadonlyArray<{
+      order: number
+      deviation: number
+    }>
+  }>
+}
 
 type Props = Readonly<{
   technicalToolData: TechnicalToolData
@@ -20,11 +31,7 @@ export function UpdateCalibrationCertificatesForm({ onSave, technicalToolData }:
       {
         name: 'calibrationCertificates',
         type: 'Array',
-        label: (
-          <h5>
-            <FormattedMessage {...mc.calibrationCertificates} />
-          </h5>
-        ),
+        label: <h5>Calibration certificates</h5>,
         viewType: 'table',
         mkEmpty: () => ({
           id: GuidGenerationService.newGuid(),
@@ -44,7 +51,7 @@ export function UpdateCalibrationCertificatesForm({ onSave, technicalToolData }:
           {
             name: 'isActive',
             type: 'Bool',
-            label: <FormattedMessage {...mc.active} />,
+            label: 'Active',
             required: false,
             className: 'mb-0',
           },

@@ -1,24 +1,24 @@
-import { IndicatorViewModel } from '@limsnow/core-domain'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { indicatorsSyncModel } from 'components/appViews/Administration/Indicators/indicators-data.support.test'
 import React from 'react'
 import host from 'storybook-host'
-import { DelayedData, setIntlDecorator, themeDecorator } from 'utils/storybook'
+import { DelayedData } from '../../utils'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { VirtualizedSelectElement } from './components/VirtualizedSelectElement'
 import { VirtualizedSelect } from './VirtualizedSelect'
+import {
+  IndicatorViewModel,
+  indicatorsSyncModel,
+} from 'VirtualizedList/VirtualizedList.data.support.test'
 
-const data = [...indicatorsSyncModel.data]
-const smallData = indicatorsSyncModel.data.slice(0, 30)
+const data = [...indicatorsSyncModel]
+const smallData = indicatorsSyncModel.slice(0, 30)
 
 const itemToString = (item: IndicatorViewModel | null) => {
   return item ? item.name : ''
 }
 
 storiesOf('common/Form/VirtualizedSelect', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 400 }))
   .add('with initial empty state and then updated with data (m)', () => (
     <DelayedData
@@ -71,7 +71,7 @@ storiesOf('common/Form/VirtualizedSelect', module)
         <VirtualizedSelect<IndicatorViewModel>
           name="some"
           label="Active"
-          options={indicatorsSyncModel.data}
+          options={indicatorsSyncModel}
           keyName="indicatorId"
           itemToString={itemToString}
         />
@@ -107,7 +107,7 @@ storiesOf('common/Form/VirtualizedSelect', module)
       <VirtualizedSelect<IndicatorViewModel>
         name="some"
         label="Active"
-        options={indicatorsSyncModel.data}
+        options={indicatorsSyncModel}
         keyName="indicatorId"
         itemToString={itemToString}
       />

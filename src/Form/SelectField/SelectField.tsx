@@ -1,8 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import { RequiredSymbol, SelectOptions } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
+import { SelectOptions } from '../../types'
 import { Field } from 'react-final-form'
-import { SelectInput } from 'components/SelectInput'
+import { SelectInput } from '../../SelectInput'
 
 export type Props = Readonly<{
   options: SelectOptions

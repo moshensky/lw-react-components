@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { RequiredSymbol } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { VirtualizedSelectElement } from './components/VirtualizedSelectElement'

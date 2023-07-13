@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { RequiredSymbol } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { MultiSelect, MultiselectOption } from '../../MultiSelect'

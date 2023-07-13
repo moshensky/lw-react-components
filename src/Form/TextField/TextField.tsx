@@ -1,5 +1,7 @@
 import classNames from 'classnames'
-import { RequiredSymbol, TextArea, Input } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
+import { TextArea } from '../../TextArea'
+import { Input } from '../../Input'
 import React from 'react'
 import { Field } from 'react-final-form'
 

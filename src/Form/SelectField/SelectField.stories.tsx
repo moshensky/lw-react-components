@@ -1,9 +1,8 @@
-import { mkRichText } from '@limsnow/core-domain'
+import { mkRichText } from '../../types'
 import { storiesOf } from '@storybook/react'
-import { RichTextView } from 'components'
+import { RichTextView } from '../../RichTextView'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { SelectField, Props } from './SelectField'
 
@@ -18,8 +17,6 @@ const props: Props = {
 }
 
 storiesOf('common/Form/SelectField', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 150 }))
   .add('default', () => (
     <StorybookForm>

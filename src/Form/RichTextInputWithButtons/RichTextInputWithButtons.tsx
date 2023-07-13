@@ -1,8 +1,10 @@
 import cn from 'classnames'
-import { Button, RichTextControlled, RichTextView } from 'components'
+import { Button } from '../../Buttons'
+import { RichTextControlled } from '../../RichTextControlled'
+import { RichTextView } from '../../RichTextView'
 import React, { useState } from 'react'
-import { not } from '@limsnow/utils'
-import { isRichTextEmpty, RichText } from '@limsnow/core-domain'
+import { not } from '../../utils'
+import { isRichTextEmpty, RichText } from '../../types'
 import { mdiContentSaveOutline, mdiLeadPencil } from '@mdi/js'
 
 type Props = Readonly<{

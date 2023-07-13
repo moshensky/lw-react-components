@@ -1,14 +1,11 @@
-import { mkRichText } from '@limsnow/core-domain'
+import { mkRichText } from '../../types'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { RichTextField } from './RichTextField'
 
 storiesOf('common/Form/RichTextField', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .add('default', () => (
     <StorybookForm>
       <RichTextField name="some_text" />
@@ -45,8 +42,6 @@ storiesOf('common/Form/RichTextField', module)
   ))
 
 storiesOf('common/Form/RichTextField', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 320 }))
   .add('in a fixed width container', () => (
     <StorybookForm

@@ -1,8 +1,9 @@
 import cn from 'classnames'
-import { RequiredSymbol, RichTextControlled } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
+import { RichTextControlled } from '../../RichTextControlled'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { RichText as RichTextT } from '@limsnow/core-domain'
+import { RichText as RichTextT } from '../../types'
 
 type Props = Readonly<{
   className?: string

@@ -1,4 +1,5 @@
-import { FaIcon, VirtualizedList } from 'components'
+import { FaIcon } from '../../../FaIcon'
+import { VirtualizedList } from '../../../VirtualizedList'
 import { useCombobox, UseComboboxState } from 'downshift'
 import { matchSorter } from 'match-sorter'
 import React from 'react'
