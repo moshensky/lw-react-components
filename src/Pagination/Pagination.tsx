@@ -1,12 +1,18 @@
 import { Pager } from '../types'
 import React from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { m } from './PaginationMessages'
 import { range } from '../utils'
 import './pagination.css'
 import { SelectInput } from '../SelectInput'
 
 type Props = Readonly<{
+  firstLabel?: string
+  lastLabel?: string
+  itemsPerPageLabel?: React.ReactNode
+  showingOfTotalLabel?: React.ReactNode
+  previousLabel?: React.ReactNode
+  nextLabel?: React.ReactNode
+  forward10Label?: string
+  backward10Label?: string
   pageNumber: number
   itemsPerPage: number
   totalItemsCount: number
@@ -29,6 +35,14 @@ export const calcMaxPageNumber = (totalItems: number, itemsPerPage: number) =>
   Math.ceil(totalItems / itemsPerPage)
 
 export function Pagination({
+  firstLabel,
+  lastLabel,
+  itemsPerPageLabel,
+  showingOfTotalLabel,
+  previousLabel,
+  nextLabel,
+  backward10Label,
+  forward10Label,
   pageNumber,
   itemsPerPage,
   totalItemsCount,
@@ -36,7 +50,6 @@ export function Pagination({
   onChange,
   pagesCountToShow,
 }: Props) {
-  const intl = useIntl()
   const pagesCount = calcMaxPageNumber(totalItemsCount, itemsPerPage)
   const currentPage = capPageNumber(pageNumber, pagesCount)
   // Cap the number of pages to render if the count is less than number to show at once
@@ -78,13 +91,13 @@ export function Pagination({
               className="h-8 page-link"
               onClick={() => onChange({ page: 1, count: itemsPerPage })}
             >
-              <FormattedMessage {...m.first} />
+              {firstLabel || 'First'}
             </button>
           </li>
           <li className={prevClass}>
             <button
               className="h-8 page-link"
-              title={intl.formatMessage(m.backward10)}
+              title={backward10Label || 'Backward 10'}
               onClick={() =>
                 onChange({ page: pageNumber - 10 > 1 ? pageNumber - 10 : 1, count: itemsPerPage })
               }
@@ -99,9 +112,7 @@ export function Pagination({
               onClick={() => onChange({ page: pageNumber - 1, count: itemsPerPage })}
             >
               <span aria-hidden="true">&laquo;</span>
-              <span className="sr-only">
-                <FormattedMessage {...m.previous} />
-              </span>
+              <span className="sr-only">{previousLabel || 'Previous'}</span>
             </button>
           </li>
 
@@ -123,15 +134,13 @@ export function Pagination({
               onClick={() => onChange({ page: pageNumber + 1, count: itemsPerPage })}
             >
               <span aria-hidden="true">&raquo;</span>
-              <span className="sr-only">
-                <FormattedMessage {...m.next} />
-              </span>
+              <span className="sr-only">{nextLabel || 'Next'}</span>
             </button>
           </li>
           <li className={nextClass}>
             <button
               className="h-8 page-link"
-              title={intl.formatMessage(m.forward10)}
+              title={forward10Label || 'Forward 10'}
               onClick={() =>
                 onChange({
                   page: pageNumber + 10 < pagesCount ? pageNumber + 10 : pagesCount,
@@ -147,7 +156,7 @@ export function Pagination({
               className="h-8 page-link"
               onClick={() => onChange({ page: pagesCount, count: itemsPerPage })}
             >
-              <FormattedMessage {...m.last} />
+              {lastLabel || 'Last'}
             </button>
           </li>
         </ul>
@@ -160,19 +169,11 @@ export function Pagination({
         onChange={(x) => onChange({ page: 1, count: parseInt(x, 10) })}
       />
 
-      <div className="ml-1 mr-3">
-        <FormattedMessage
-          id="ui.components.common.pagination.itemsPerPage"
-          defaultMessage="Items per page"
-        />
-      </div>
+      <div className="ml-1 mr-3">{itemsPerPageLabel || 'Items per page'}</div>
 
       <div className="ml-auto">
-        <FormattedMessage
-          id="ui.components.common.pagination.legend"
-          defaultMessage="Showing {firstVisibleItem} - {lastVisibleItem} of {totalItemsCount} items"
-          values={{ firstVisibleItem, lastVisibleItem, totalItemsCount }}
-        />
+        {showingOfTotalLabel ||
+          `Showing ${firstVisibleItem} - ${lastVisibleItem} of ${totalItemsCount} items`}
       </div>
     </div>
   )

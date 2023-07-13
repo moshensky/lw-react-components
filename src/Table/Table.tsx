@@ -3,9 +3,7 @@ import { calcMaxPageNumber, capPageNumber, Pagination } from '../Pagination'
 import * as O from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/function'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { Loadable, Pager } from '../types'
-import { m } from './tableMessages'
 import { Alert } from '../Alerts'
 import { TableContainer } from './TableContainer'
 import { TableHead } from './TableHead'
@@ -38,6 +36,7 @@ export type Row = Readonly<{
 }>
 
 export type Props<T> = Readonly<{
+  loadingDataError?: React.ReactNode
   className?: string
   filter?: React.ReactNode
   thead: React.ReactNode
@@ -171,7 +170,7 @@ export class Table<T> extends React.Component<Props<T>, State> {
 
   render() {
     const props = this.props
-    const { filter, thead, render, pagination, getUniqKey, data } = props
+    const { filter, thead, render, pagination, getUniqKey, data, loadingDataError } = this.props
 
     const onRowSelect = props.type === 'cells' ? props.onRowSelect : undefined
 
@@ -222,7 +221,7 @@ export class Table<T> extends React.Component<Props<T>, State> {
               <tr>
                 <td colSpan={100}>
                   <Alert type="danger">
-                    <FormattedMessage {...m.loadableError} />
+                    {loadingDataError || 'Error loading or updating data. Please reload.'}
                     <br />
                     {data.failure && JSON.stringify(data.failure, undefined, 2)}
                   </Alert>
