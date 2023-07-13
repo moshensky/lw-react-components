@@ -88,7 +88,7 @@ storiesOf('common/Form/FormDefinition/FormControl', module)
           label: 'Test label',
           options: idWithNames,
           required: true,
-          validate: requiredValidator,
+          validate: requiredValidator(),
         },
       ],
     }
@@ -106,7 +106,7 @@ storiesOf('common/Form/FormDefinition/FormControl', module)
           label: 'Test label',
           options: idWithNames,
           required: true,
-          validate: requiredValidator,
+          validate: requiredValidator(),
         },
       ],
     }
@@ -123,7 +123,7 @@ storiesOf('common/Form/FormDefinition/FormControl', module)
           label: 'New Password',
           confirmLabel: 'Confirm Password',
           required: true,
-          validate: passwordValidator,
+          validate: passwordValidator(),
         },
       ],
     }

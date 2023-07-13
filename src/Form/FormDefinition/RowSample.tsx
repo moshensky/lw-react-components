@@ -42,14 +42,14 @@ export function RowSample({ filterModel, onFilter, technicalTools, onResetFilter
         type: 'DateField',
         label: 'From Date',
         required: true,
-        validate: requiredValidator,
+        validate: requiredValidator(),
       },
       {
         name: 'toDate',
         type: 'TextField',
         label: 'To Date',
         required: true,
-        validate: requiredValidator,
+        validate: requiredValidator(),
       },
       {
         name: 'technicalToolIds',
@@ -60,7 +60,7 @@ export function RowSample({ filterModel, onFilter, technicalTools, onResetFilter
           id: x.technicalToolId,
           name: x.description,
         })),
-        validate: requiredValidator,
+        validate: requiredValidator(),
       },
     ],
   }

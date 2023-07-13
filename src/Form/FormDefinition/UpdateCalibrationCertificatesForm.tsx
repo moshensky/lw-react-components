@@ -33,7 +33,7 @@ export function UpdateCalibrationCertificatesForm({ onSave, technicalToolData }:
             type: 'TextField',
             label: 'Certificate number',
             required: true,
-            validate: requiredValidator,
+            validate: requiredValidator(),
             className: 'mb-0',
           },
           {
@@ -60,7 +60,7 @@ export function UpdateCalibrationCertificatesForm({ onSave, technicalToolData }:
                 type: 'TextField',
                 label: 'Order',
                 required: true,
-                validate: requiredValidator,
+                validate: requiredValidator(),
                 className: 'mb-0',
               },
               {

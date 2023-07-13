@@ -1,4 +1,5 @@
-import { MemorySize, Pill, RequiredSymbol } from 'components'
+import { MemorySize } from '../../MemorySize'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { DropFiles } from './DropFiles'
@@ -31,7 +32,7 @@ export function FileField({ name, label, required, disabled, append }: Props) {
                   value.map((x: File) => (
                     <li key={x.name} className="flex justify-between items-center">
                       {x.name}
-                      <Pill value={<MemorySize value={x.size} />} type="primary" className="ml-3" />
+                      <MemorySize value={x.size} />
                     </li>
                   ))}
               </ul>

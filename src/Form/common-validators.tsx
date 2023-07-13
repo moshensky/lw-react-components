@@ -1,13 +1,10 @@
 import React from 'react'
-import { mc } from 'intl'
-import { FormattedMessage } from 'react-intl'
 import { pipe } from 'fp-ts/lib/function'
 import * as E from 'fp-ts/lib/Either'
 import { ValuePath, Validator } from './validate'
 import { isValid as dfIsValid, isDate } from 'date-fns'
-import { isNil, not } from '@limsnow/utils'
-import { unreachable } from '@limsnow/core-domain/utils'
-import { isRichTextEmpty, RichText } from '@limsnow/core-domain'
+import { isNil, not } from '../utils'
+import { isRichTextEmpty, RichText } from '../types'
 
 function isEmpty(variable: unknown): boolean {
   if (variable === null) {
@@ -59,9 +56,6 @@ function isEmpty(variable: unknown): boolean {
     case 'undefined': {
       return true
     }
-    default: {
-      return unreachable(type)
-    }
   }
 }
 
@@ -81,36 +75,40 @@ export const isEmail = (value: any): boolean => {
   return isNotEmpty(value) && re.test(value)
 }
 
-export const requiredValidator = {
-  errorMsg: <FormattedMessage {...mc.requiredFiledErrorMessage} />,
+export const requiredValidator = (errorMsg: React.ReactNode = 'Required') => ({
+  errorMsg,
   validator: isNotEmpty,
-}
-
-export const emailValidator = {
-  errorMsg: <FormattedMessage {...mc.invalidEmail} />,
-  validator: isEmail,
-}
-
-export const isNumberValidator = {
-  errorMsg: <FormattedMessage {...mc.isNaN} />,
-  validator: (x: any) => !isNaN(x),
-}
-
-export const isOptionalNumberValidator = {
-  errorMsg: <FormattedMessage {...mc.isNaN} />,
-  validator: (x: any) => isEmpty(x) || !isNaN(x),
-}
-
-export const isNumberSmallerValidator = (max: number) => ({
-  errorMsg: <FormattedMessage {...mc.numberMustBeBetweenRange} values={{ max }} />,
-  validator: (x: any) => isNumberValidator.validator(x) && x > 0 && x < max,
 })
 
-export const mkRequiredValidator = (path: ValuePath): Validator =>
-  Validator.of(path, <FormattedMessage {...mc.requiredFiledErrorMessage} />, isNotEmpty)
+export const emailValidator = (errorMsg: React.ReactNode = 'Invalid email') => ({
+  errorMsg,
+  validator: isEmail,
+})
 
-export const passwordValidator = {
-  errorMsg: <FormattedMessage {...mc.passwordsMismatch} />,
+export const isNumberValidator = (errorMsg: React.ReactNode = 'It must be a valid number') => ({
+  errorMsg,
+  validator: (x: any) => !isNaN(x),
+})
+
+export const isOptionalNumberValidator = (
+  errorMsg: React.ReactNode = 'It must be a valid number',
+) => ({
+  errorMsg,
+  validator: (x: any) => isEmpty(x) || !isNaN(x),
+})
+
+export const isNumberSmallerValidator = (max: number, errorMsg: React.ReactNode) => ({
+  errorMsg: errorMsg || `It must be smaller than ${max}`,
+  validator: (x: any) => isNumberValidator().validator(x) && x > 0 && x < max,
+})
+
+export const mkRequiredValidator = (
+  path: ValuePath,
+  errorMsg: React.ReactNode = 'Required',
+): Validator => Validator.of(path, errorMsg, isNotEmpty)
+
+export const passwordValidator = (errorMsg: React.ReactNode = 'Passwords mismatch') => ({
+  errorMsg,
   validator: (password: any, values: any) =>
     isNotEmpty(password) && password === values.password_confirm,
-}
+})

@@ -3,12 +3,9 @@ import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Form } from 'react-final-form'
 import host from 'storybook-host'
-import { themeDecorator, setIntlDecorator } from 'utils/storybook'
 import { DateField } from './DateTimeField'
 
 storiesOf('common/Form/DateField', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 400 }))
   .add('default', () => (
     <Form

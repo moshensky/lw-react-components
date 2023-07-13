@@ -1,6 +1,8 @@
 import cn from 'classnames'
 import { mdiCalendarClock } from '@mdi/js'
-import { Button, Input, RequiredSymbol } from 'components'
+import { Button } from '../../Buttons'
+import { Input } from '../../Input'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import React, { forwardRef } from 'react'
 
 type Props = Readonly<{

@@ -1,9 +1,8 @@
-import { Button, ConfirmButton, RequiredSymbol } from 'components'
+import { Button, ConfirmButton } from '../../Buttons'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import { FieldState, FormApi } from 'final-form'
 import React from 'react'
 import { FieldArray } from 'react-final-form-arrays'
-import { FormattedMessage } from 'react-intl'
-import { mc } from 'intl'
 import { ArrayFormControl, FormControl, GetFormControl, UnpackArrayType } from './types'
 import './array-form-control.css'
 import { mdiPlusThick, mdiTrashCanOutline } from '@mdi/js'
@@ -24,6 +23,7 @@ const hasFieldError = (x?: FieldState<any>): boolean =>
 
 type Props<T, K extends keyof T> = ArrayFormControl<T, K> &
   Readonly<{
+    addRowLabel?: React.ReactNode
     // FIXME
     getFormControl: GetFormControl<any>
     formControlName: string
@@ -217,7 +217,7 @@ export function ArrayFormControl<T, K extends keyof T>(props: Props<T, K>) {
             className="ml-auto mb-1 btn-sm"
             onClick={() => form.mutators.push(formControlName, mkEmpty())}
             variant="secondary"
-            label={<FormattedMessage {...mc.addRow} />}
+            label={props.addRowLabel || 'Add row'}
             icon={mdiPlusThick}
             outline
           />
