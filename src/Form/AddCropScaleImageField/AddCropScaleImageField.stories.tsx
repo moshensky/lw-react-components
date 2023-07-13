@@ -1,13 +1,10 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { AddCropScaleImageField } from './AddCropScaleImageField'
 
 storiesOf('common/Form/AddCropScaleImageField', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('default', () => (
     <StorybookForm>

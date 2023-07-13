@@ -1,5 +1,6 @@
 import classNames from 'classnames'
-import { RequiredSymbol, ToggleButtonOptions, ToggleButton } from 'components'
+import { RequiredSymbol } from '../../RequiredSymbol'
+import { ToggleButtonOptions, ToggleButton } from '../../Buttons'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { FormattedMessage } from 'react-intl'

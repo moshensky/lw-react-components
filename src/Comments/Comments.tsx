@@ -1,4 +1,4 @@
-import { Guid } from '@limsnow/core-domain'
+import { Guid } from '../types'
 import classNames from 'classnames'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'

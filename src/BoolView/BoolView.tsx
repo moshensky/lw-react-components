@@ -1,5 +1,5 @@
 import { mdiCheckboxBlankOutline, mdiCheckboxMarkedOutline } from '@mdi/js'
-import { FaIcon } from 'components'
+import { FaIcon } from '../FaIcon'
 import React from 'react'
 
 type Props = Readonly<{

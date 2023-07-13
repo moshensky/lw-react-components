@@ -1,7 +1,10 @@
-import { Button, isNotEmpty, Tabs, TextArea } from 'components'
+import { isNotEmpty } from '../Form'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { m } from './comments-messages'
+import { Tabs } from '../Tabs'
+import { TextArea } from '../TextArea'
+import { Button } from '../Buttons'
 
 type Props = Readonly<{
   defaultValue?: string

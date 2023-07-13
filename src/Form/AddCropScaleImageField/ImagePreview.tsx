@@ -1,4 +1,6 @@
-import { CropScaleImage, FileImagePreview, MemorySize } from 'components'
+import { MemorySize } from '../../MemorySize'
+import { CropScaleImage } from '../../CropScaleImage'
+import { FileImagePreview } from '../../FileImagePreview'
 import React from 'react'
 import { DropImage } from './DropImage'
 

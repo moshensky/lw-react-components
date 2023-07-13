@@ -3,11 +3,9 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator } from 'utils/storybook'
 import { ConfirmButton } from './ConfirmButton'
 
 storiesOf('common/Buttons/ConfirmButton', module)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('default (m)', () => (
     <ConfirmButton

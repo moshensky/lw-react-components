@@ -1,5 +1,5 @@
 import { mdiScissorsCutting } from '@mdi/js'
-import { Button } from 'components'
+import { Button } from '../Buttons'
 import Cropper from 'cropperjs'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'

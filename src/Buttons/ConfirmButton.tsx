@@ -1,16 +1,25 @@
-import { Popover } from 'components'
+import { Popover } from '../Popover'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { mc } from '../../../intl'
 import { Button, Props as ButtonProps } from './Button'
 
 type Props = ButtonProps &
   Readonly<{
+    pleaseConfirmLabel?: React.ReactNode
+    cancelLabel?: React.ReactNode
+    confirmLabel?: React.ReactNode
     domId?: string
     stopPropagation?: boolean
   }>
 
-export function ConfirmButton({ onClick, domId, stopPropagation, ...rest }: Props) {
+export function ConfirmButton({
+  pleaseConfirmLabel,
+  cancelLabel,
+  confirmLabel,
+  domId,
+  stopPropagation,
+  onClick,
+  ...rest
+}: Props) {
   return (
     <Popover
       className="inline"
@@ -25,14 +34,14 @@ export function ConfirmButton({ onClick, domId, stopPropagation, ...rest }: Prop
           }}
         />
       )}
-      header={() => <FormattedMessage {...mc.pleaseConfirm} />}
+      header={() => confirmLabel || 'Confirm'}
       body={(hide) => (
         <div className="whitespace-nowrap">
           <Button
             variant="primary"
             stopPropagation={stopPropagation}
             onClick={() => hide()}
-            label={<FormattedMessage {...mc.cancel} />}
+            label={cancelLabel || 'Cancel'}
           />
           <Button
             className="ml-1"
@@ -43,7 +52,7 @@ export function ConfirmButton({ onClick, domId, stopPropagation, ...rest }: Prop
               onClick && onClick(ev)
               hide()
             }}
-            label={<FormattedMessage {...mc.confirm} />}
+            label={confirmLabel || 'Confirm'}
           />
         </div>
       )}

@@ -1,9 +1,8 @@
 import { storiesOf } from '@storybook/react'
-import { MemorySize } from 'components'
+import { MemorySize } from '../MemorySize'
 import React from 'react'
 import host from 'storybook-host'
-import { dataURLtoFile } from '@limsnow/utils'
-import { setIntlDecorator } from 'utils/storybook'
+import { dataURLtoFile } from '../utils'
 
 import { CropperState, CropScaleImage } from './CropScaleImage'
 import { testBase64ImageData } from './test-base64-image-data'
@@ -66,6 +65,5 @@ export class TestCropScaleImage extends React.Component<Props, State> {
 }
 
 storiesOf('common/CropScaleImage', module)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('default', () => <TestCropScaleImage />, { loki: { skip: true } })

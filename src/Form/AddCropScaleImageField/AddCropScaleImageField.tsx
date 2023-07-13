@@ -1,4 +1,5 @@
-import { MemorySize, RequiredSymbol } from 'components'
+import { MemorySize } from '../../MemorySize'
+import { RequiredSymbol } from '../../RequiredSymbol'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { ImagePreview } from './ImagePreview'

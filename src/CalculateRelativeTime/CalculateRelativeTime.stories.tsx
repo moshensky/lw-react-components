@@ -2,7 +2,6 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { CalculateRelativeTime } from './CalculateRelativeTime'
 import host from 'storybook-host'
-import { setIntlDecorator } from 'utils/storybook'
 
 const render = (date: Date) => (
   <div>
@@ -15,7 +14,6 @@ const render = (date: Date) => (
 
 storiesOf('common/CalculateRelativeTime', module)
   .addDecorator(host({}))
-  .addDecorator(setIntlDecorator('en'))
   .add('within 60 seconds', () => {
     const createdAt = new Date()
     createdAt.setSeconds(createdAt.getSeconds() - 30)

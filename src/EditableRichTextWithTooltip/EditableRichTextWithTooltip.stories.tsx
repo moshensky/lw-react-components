@@ -1,10 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { EditableRichTextWithTooltip, Props } from './EditableRichTextWithTooltip'
 import { action } from '@storybook/addon-actions'
-import { mkRichText } from '@limsnow/core-domain'
+import { mkRichText } from '../types'
 
 const baseProps: Props = {
   data: mkRichText('text'),
@@ -13,8 +12,6 @@ const baseProps: Props = {
 }
 
 storiesOf('common/EditableRichTextWithTooltip', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('base', () => <EditableRichTextWithTooltip {...baseProps} disabled={false} />)
   .add('disabled rich text', () => <EditableRichTextWithTooltip {...baseProps} disableRichText />)

@@ -1,12 +1,14 @@
-import { Button, CalculateRelativeTime, Popover } from 'components'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { mc } from '../../../intl'
 import { FaIcon } from '../FaIcon'
 import { Avatar } from './Avatar'
 import { mdiDotsHorizontal, mdiLeadPencil, mdiTrashCanOutline } from '@mdi/js'
+import { CalculateRelativeTime } from '../CalculateRelativeTime'
+import { Popover } from '../Popover'
+import { Button } from '../Buttons'
 
 type Props = Readonly<{
+  editLabel?: React.ReactNode
+  deleteLabel?: React.ReactNode
   name: string
   avatar?: string
   text: string
@@ -17,6 +19,8 @@ type Props = Readonly<{
 }>
 
 export function Comment({
+  editLabel,
+  deleteLabel,
   name,
   createdAt,
   updatedAt,
@@ -60,7 +64,7 @@ export function Comment({
                       hide()
                     }}
                     icon={mdiTrashCanOutline}
-                    label={<FormattedMessage {...mc.delete} />}
+                    label={deleteLabel || 'Delete'}
                   />
                   <Button
                     className="ml-1"
@@ -71,7 +75,7 @@ export function Comment({
                       hide()
                     }}
                     icon={mdiLeadPencil}
-                    label={<FormattedMessage {...mc.edit} />}
+                    label={editLabel || 'Edit'}
                   />
                 </>
               )}

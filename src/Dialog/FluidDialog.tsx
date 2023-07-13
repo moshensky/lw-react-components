@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Scrim } from '../Scrim/Scrim'
-import { theme } from 'theme'
+import { rgba } from '../utils'
 
 type Props = Readonly<{
   zIndex?: number
@@ -31,7 +31,7 @@ const container: React.CSSProperties = {
   margin: 24,
   maxHeight: 'calc(100% - 40px)',
   backgroundColor: 'white',
-  boxShadow: theme.shadow.md,
+  boxShadow: `${10}px ${10}px ${24}px ${rgba('#030303', 0.5)}`,
   border: '1px solid rgba(3, 3, 3, 0.2)',
   borderRadius: '0.3rem',
 }
