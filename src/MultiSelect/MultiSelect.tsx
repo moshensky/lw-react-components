@@ -1,7 +1,7 @@
 import React from 'react'
 import { MultiselectOptions } from './types'
 import { Input } from './Input'
-import { not } from '@limsnow/utils'
+import { not } from '../utils'
 import { Tags } from './Tags'
 import { Container } from './Container'
 import { Item } from './Item'

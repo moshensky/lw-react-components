@@ -2,18 +2,17 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { MultiSelect } from './MultiSelect'
 import { MultiselectOptions } from './types'
 import { Tag } from './Tag'
-import { indicatorsSyncModel } from 'components/appViews/Administration/Indicators/indicators-data.support.test'
+import { indicatorsSyncModel } from '../VirtualizedList/VirtualizedList.data.support.test'
 
 export const basic: MultiselectOptions = ['first', 'second', 'third'].map((x) => ({
   id: `id_${x}`,
   label: x,
 }))
 
-export const options: MultiselectOptions = indicatorsSyncModel.data
+export const options: MultiselectOptions = indicatorsSyncModel
   .slice(0, 300)
   .map((x) => ({
     id: `${x.indicatorId}`,
@@ -31,8 +30,6 @@ const DelayedData = () => {
 }
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('Tag', () => <Tag label={basic[0].label} onRemoveTag={action('onRemoveTag')} />)
   .add('Tag disabled', () => (
@@ -40,8 +37,6 @@ storiesOf('common/MultiSelect', module)
   ))
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('invalid', () => (
     <MultiSelect initialSelected={basic} options={options} invalid onChange={action('onChange')} />
@@ -54,8 +49,6 @@ storiesOf('common/MultiSelect', module)
   ))
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 160 }))
   .add('fixed width', () => (
     <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />

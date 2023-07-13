@@ -1,5 +1,5 @@
 import React from 'react'
-import { not } from '@limsnow/utils'
+import { not } from '../utils'
 
 type Props = Readonly<{
   label: string

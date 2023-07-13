@@ -1,4 +1,4 @@
-import { Mark } from '@limsnow/core-domain/types/rich-text'
+import { Mark } from '../types'
 import { Editor } from 'slate'
 
 const isMarkActive =

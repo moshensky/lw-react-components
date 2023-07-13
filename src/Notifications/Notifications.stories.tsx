@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions'
 import { Notifications } from './Notifications'
 import { UINotification } from './UINotification'
 import host from 'storybook-host'
-import { setIntlDecorator } from 'utils/storybook'
 
 export const notifications: ReadonlyArray<UINotification> = [
   {
@@ -56,7 +55,6 @@ export const notifications: ReadonlyArray<UINotification> = [
 
 storiesOf('common/Notifications', module)
   .addDecorator(host({}))
-  .addDecorator(setIntlDecorator('en'))
   .add('With Unread and Read Notifications', () => (
     <Notifications notifications={notifications} onDismiss={action('onDismiss')} />
   ))

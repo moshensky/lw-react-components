@@ -1,10 +1,9 @@
 import { mdiTrashCanOutline } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { Button } from 'components'
+import { Button } from '../Buttons'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { Popover } from './Popover'
 
 const trigger = (show: () => void) => (
@@ -24,8 +23,6 @@ const body = (hide: () => void) => (
 )
 
 storiesOf('common/Popover', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('default (m)', () => <Popover trigger={trigger} header={() => 'title'} body={body} />)
   .add('x3 (m)', () => (

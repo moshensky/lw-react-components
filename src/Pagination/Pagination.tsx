@@ -1,8 +1,8 @@
-import { Pager } from '@limsnow/core-domain'
+import { Pager } from '../types'
 import React from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { m } from './PaginationMessages'
-import { range } from '@limsnow/utils'
+import { range } from '../utils'
 import './pagination.css'
 import { SelectInput } from '../SelectInput'
 
