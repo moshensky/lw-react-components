@@ -1,5 +1,4 @@
 import React from 'react'
-import { CalculateRelativeTime } from '../CalculateRelativeTime'
 
 export type UINotification = Readonly<{
   id: string
@@ -27,6 +26,7 @@ const getTypeColor = ({ level }: UINotification) => {
 }
 
 type Props = Readonly<{
+  calculateRelativeTime: (date: Date) => React.ReactNode
   notification: UINotification
   dismissLabel?: React.ReactNode
   sourceLabel?: React.ReactNode
@@ -34,6 +34,7 @@ type Props = Readonly<{
 }>
 
 export function UINotification({
+  calculateRelativeTime,
   dismissLabel,
   sourceLabel,
   notification,
@@ -66,9 +67,7 @@ export function UINotification({
             <span>
               {sourceLabel || 'Source'}: {source}
             </span>
-            <span className="ml-3">
-              <CalculateRelativeTime date={createdAt} />
-            </span>
+            <span className="ml-3">{calculateRelativeTime(createdAt)}</span>
           </p>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { UINotification } from '.'
 
 type Props = {
+  calculateRelativeTime: (date: Date) => string
   unreadNotificationsLabel?: React.ReactNode
   dismissAllLabel?: React.ReactNode
   readNotificationsLabel?: React.ReactNode
@@ -22,6 +23,7 @@ const SectionTitle = ({ left, right }: SectionTitleProps) => (
 )
 
 export function Notifications({
+  calculateRelativeTime,
   unreadNotificationsLabel,
   dismissAllLabel,
   readNotificationsLabel,
@@ -68,6 +70,7 @@ export function Notifications({
               <UINotification
                 key={notification.id}
                 notification={notification}
+                calculateRelativeTime={calculateRelativeTime}
                 onDismiss={onDismiss}
               />
             ))}
@@ -83,6 +86,7 @@ export function Notifications({
               <UINotification
                 key={notification.id}
                 notification={notification}
+                calculateRelativeTime={calculateRelativeTime}
                 onDismiss={onDismiss}
               />
             ))}

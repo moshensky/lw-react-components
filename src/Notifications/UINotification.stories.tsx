@@ -46,22 +46,39 @@ const notifications: ReadonlyArray<UINotification> = [
 storiesOf('common/Notification', module)
   .addDecorator(host({}))
   .add('Info Notification (Unread)', () => (
-    <UINotification notification={notifications[0]} onDismiss={action('onDismiss')} />
+    <UINotification
+      notification={notifications[0]}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toDateString()}
+    />
   ))
   .add('Info Notification (Read)', () => (
     <UINotification
       notification={{ ...notifications[0], read: true }}
       onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toDateString()}
     />
   ))
   .add('Warning Notification (Unread)', () => (
-    <UINotification notification={notifications[1]} onDismiss={action('onDismiss')} />
+    <UINotification
+      notification={notifications[1]}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toDateString()}
+    />
   ))
   .add('Danger Notification (Read)', () => (
-    <UINotification notification={notifications[2]} onDismiss={action('onDismiss')} />
+    <UINotification
+      notification={notifications[2]}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toDateString()}
+    />
   ))
   .add('Success Notification (Read)', () => (
     <div style={{ width: 400 }}>
-      <UINotification notification={notifications[3]} onDismiss={action('onDismiss')} />
+      <UINotification
+        notification={notifications[3]}
+        onDismiss={action('onDismiss')}
+        calculateRelativeTime={(x) => x.toDateString()}
+      />
     </div>
   ))

@@ -2,11 +2,11 @@ import React from 'react'
 import { FaIcon } from '../FaIcon'
 import { Avatar } from './Avatar'
 import { mdiDotsHorizontal, mdiLeadPencil, mdiTrashCanOutline } from '@mdi/js'
-import { CalculateRelativeTime } from '../CalculateRelativeTime'
 import { Popover } from '../Popover'
 import { Button } from '../Buttons'
 
 type Props = Readonly<{
+  calculateRelativeTime: (date: Date) => React.ReactNode
   editLabel?: React.ReactNode
   deleteLabel?: React.ReactNode
   name: string
@@ -19,6 +19,7 @@ type Props = Readonly<{
 }>
 
 export function Comment({
+  calculateRelativeTime,
   editLabel,
   deleteLabel,
   name,
@@ -38,9 +39,7 @@ export function Comment({
       <div className="flex-grow">
         <div className="flex mb-2">
           <strong>{name}</strong>
-          <div className="text-gray-500 ml-1">
-            <CalculateRelativeTime date={updatedAt ?? createdAt} />
-          </div>
+          <div className="text-gray-500 ml-1">{calculateRelativeTime(updatedAt ?? createdAt)}</div>
           <div className="ml-auto">
             <Popover
               trigger={(show) => (
