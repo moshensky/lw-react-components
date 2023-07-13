@@ -1,7 +1,5 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { CalculateRelativeTime } from '..'
-import { m } from './uiNotification.messages'
+import { CalculateRelativeTime } from '../CalculateRelativeTime'
 
 export type UINotification = Readonly<{
   id: string
@@ -30,10 +28,17 @@ const getTypeColor = ({ level }: UINotification) => {
 
 type Props = Readonly<{
   notification: UINotification
+  dismissLabel?: React.ReactNode
+  sourceLabel?: React.ReactNode
   onDismiss: (id: string) => void
 }>
 
-export function UINotification({ notification, onDismiss }: Props): JSX.Element {
+export function UINotification({
+  dismissLabel,
+  sourceLabel,
+  notification,
+  onDismiss,
+}: Props): JSX.Element {
   const { id, title, description, createdAt, source, read } = notification
 
   const handleDismiss = () => {
@@ -51,7 +56,7 @@ export function UINotification({ notification, onDismiss }: Props): JSX.Element 
               className="ml-7 text-gray-500 hover:text-gray-700 focus:outline-none self-start underline"
               onClick={handleDismiss}
             >
-              <FormattedMessage {...m.dismiss} />
+              {dismissLabel || 'dismiss'}
             </button>
           )}
         </div>
@@ -59,7 +64,7 @@ export function UINotification({ notification, onDismiss }: Props): JSX.Element 
           <p className="text-sm text-gray-700 mb-2">{description}</p>
           <p className="text-gray-500 text-sm flex justify-between ">
             <span>
-              <FormattedMessage {...m.source} />: {source}
+              {sourceLabel || 'Source'}: {source}
             </span>
             <span className="ml-3">
               <CalculateRelativeTime date={createdAt} />

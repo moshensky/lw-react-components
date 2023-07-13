@@ -1,9 +1,11 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { UINotification } from '.'
-import { m } from './notifications.messages'
 
 type Props = {
+  unreadNotificationsLabel?: React.ReactNode
+  dismissAllLabel?: React.ReactNode
+  readNotificationsLabel?: React.ReactNode
+  noNotificationsToDisplayLabel?: React.ReactNode
   notifications: ReadonlyArray<UINotification>
   onDismiss: (id: string) => void
 }
@@ -19,7 +21,14 @@ const SectionTitle = ({ left, right }: SectionTitleProps) => (
   </div>
 )
 
-export function Notifications({ notifications, onDismiss }: Props) {
+export function Notifications({
+  unreadNotificationsLabel,
+  dismissAllLabel,
+  readNotificationsLabel,
+  noNotificationsToDisplayLabel,
+  notifications,
+  onDismiss,
+}: Props) {
   const sortedNotifications = [...notifications].sort((a, b) => {
     // Sort by unread status first
     if (a.read && !b.read) {
@@ -44,13 +53,13 @@ export function Notifications({ notifications, onDismiss }: Props) {
       {unreadNotifications.length > 0 && (
         <div>
           <SectionTitle
-            left={<FormattedMessage {...m.unreadNotifications} />}
+            left={unreadNotificationsLabel || 'Unread notifications'}
             right={
               <button
                 className="ml-7 text-gray-500 hover:text-gray-700 focus:outline-none self-start underline"
                 onClick={handleDismissAll}
               >
-                <FormattedMessage {...m.dismissAll} />
+                {dismissAllLabel || 'Dismiss all'}
               </button>
             }
           />
@@ -68,7 +77,7 @@ export function Notifications({ notifications, onDismiss }: Props) {
 
       {readNotifications.length > 0 && (
         <div>
-          <SectionTitle left={<FormattedMessage {...m.readNotifications} />} />
+          <SectionTitle left={readNotificationsLabel || 'Read notifications last 24 hours'} />
           <div className="space-y-1">
             {readNotifications.map((notification) => (
               <UINotification
@@ -83,7 +92,7 @@ export function Notifications({ notifications, onDismiss }: Props) {
 
       {sortedNotifications.length === 0 && (
         <p className="text-gray-500">
-          <FormattedMessage {...m.noNotificationsToDisplay} />
+          {noNotificationsToDisplayLabel || 'No notifications to display'}
         </p>
       )}
     </div>
