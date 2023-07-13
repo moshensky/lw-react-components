@@ -1,7 +1,6 @@
 import { FormDefinition, LWForm } from '../FormDefinition'
 import { requiredValidator } from '../common-validators'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { GuidGenerationService } from '../../utils'
 import { Card, CardBody } from '../../Card'
 

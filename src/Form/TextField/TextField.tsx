@@ -4,8 +4,7 @@ import { TextArea } from '../../TextArea'
 import { Input } from '../../Input'
 import React from 'react'
 import { Field } from 'react-final-form'
-
-export type TextFieldVariant = 'text' | 'multiline' | 'password' | 'number'
+import { TextFieldVariant } from '../FormDefinition/types'
 
 type Props = Readonly<{
   id?: string
