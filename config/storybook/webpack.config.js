@@ -22,11 +22,6 @@ module.exports = ({ config, mode }) => {
     parts.moduleRules.loadFonts({ options: { name: './fonts/[name].[hash].[ext]' } }),
     parts.moduleRules.loadCSS(),
     parts.moduleRules.loadImages(),
-    parts.plugin.copyWebpackPlugin([
-      { from: 'src/assets/favicon.ico', to: 'favicon.ico' },
-      { from: 'src/assets/locales', to: 'assets/locales' },
-      { from: 'src/assets/images', to: 'assets/images' },
-    ]),
   ])
 
   return mode.toLowerCase() === 'production'

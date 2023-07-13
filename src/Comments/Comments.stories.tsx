@@ -27,7 +27,7 @@ const comments: Comments = [
   {
     id: Guid.of('3'),
     name: 'Long Long Comment And Avatar Name',
-    avatar: '../../../assets/images/logo-limsnow.svg',
+    avatar: './logo-limsnow.svg',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     createdAt: new Date('2018-07-01:20:22:20Z'),
     updatedAt: null,
@@ -68,14 +68,12 @@ storiesOf('common/Comments', module)
     />
   ))
   .add('Avatar no img', () => <Avatar name="инж. Никита Мошенский" />)
-  .add('Avatar img', () => (
-    <Avatar name="инж. Никита Мошенский" avatar={'../../../assets/images/logo-limsnow.svg'} />
-  ))
+  .add('Avatar img', () => <Avatar name="инж. Никита Мошенский" avatar={'./logo-limsnow.svg'} />)
   .add('Comment', () => (
     <Comment
       name="Gosho"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      avatar={'../../../assets/images/logo-limsnow.svg'}
+      avatar={'./logo-limsnow.svg'}
       createdAt={new Date('2018-01-01:20:22:20Z')}
       calculateRelativeTime={(x) => x.toDateString()}
       updatedAt={null}
@@ -108,7 +106,7 @@ storiesOf('common/Comments', module)
   .add('WriteCommentStub', () => (
     <WriteCommentStub
       name="инж. Никита Мошенский"
-      avatar={'../../../assets/images/logo-limsnow.svg'}
+      avatar={'./logo-limsnow.svg'}
       onFocus={action('on focus')}
     />
   ))

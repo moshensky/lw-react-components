@@ -21,11 +21,6 @@ const baseUrl = '/'
 module.exports = (env, { mode }) => {
   const common = merge([
     parts.moduleRules.loadFonts({ options: { name: './fonts/[name].[contenthash].[ext]' } }),
-    parts.plugin.copyWebpackPlugin([
-      { from: 'src/assets/favicon.ico', to: 'favicon.ico' },
-      { from: 'src/assets/locales', to: 'assets/locales' },
-      { from: 'src/assets/images', to: 'assets/images' },
-    ]),
     {
       entry: {
         app: [`${PATH.src}/index.tsx`],
