@@ -1,16 +1,24 @@
 import React from 'react'
 import { useDropzone } from 'react-dropzone'
-import { FormattedMessage } from 'react-intl'
 import cn from 'classnames'
-import { m } from './messages'
 
 type Props = {
+  dropFileHereLabel?: React.ReactNode
+  dragAndDropFileHereLabel?: React.ReactNode
+  acceptedFileFormatsLabel?: React.ReactNode
   invalid?: boolean
   disabled?: boolean
   onDrop: (file: File) => void
 }
 
-export function DropImage({ invalid, disabled, onDrop }: Props) {
+export function DropImage({
+  dropFileHereLabel,
+  dragAndDropFileHereLabel,
+  acceptedFileFormatsLabel,
+  invalid,
+  disabled,
+  onDrop,
+}: Props) {
   const onImageSelected = (accepted: ReadonlyArray<File>) => {
     onDrop(accepted[0])
   }
@@ -31,16 +39,14 @@ export function DropImage({ invalid, disabled, onDrop }: Props) {
     >
       <input {...getInputProps()} />
       {isDragActive ? (
-        <p className="p-2">
-          <FormattedMessage {...m.dropFileHere} />
-        </p>
+        <p className="p-2">{dropFileHereLabel || 'Drop the file here ...'}</p>
       ) : (
         <>
           <p className="p-2">
-            <FormattedMessage {...m.dragAndDropFilesHere} />
+            {dragAndDropFileHereLabel || 'Drag and drop a file here, or click to select a file'}
           </p>
           <p className="p-2">
-            <FormattedMessage {...m.acceptedFileFormats} />
+            {acceptedFileFormatsLabel || 'Only *.jpeg or *.png formats are accepted.'}
           </p>
         </>
       )}

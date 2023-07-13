@@ -2,13 +2,12 @@ import { mdiScissorsCutting } from '@mdi/js'
 import { Button } from '../Buttons'
 import Cropper from 'cropperjs'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { m } from './messages'
 import 'cropperjs/dist/cropper.css'
 
 export type CropperState = 'initializing' | 'initialized' | 'processing'
 
 type Props = Readonly<{
+  cropLabel?: React.ReactNode
   file: File
   maxWidth?: number
   onCrop: (file: File) => void
@@ -108,7 +107,7 @@ export class CropScaleImage extends React.Component<Props, State> {
   }
 
   render() {
-    const { file } = this.props
+    const { file, cropLabel } = this.props
     const { cropperState } = this.state
 
     return (
@@ -123,7 +122,7 @@ export class CropScaleImage extends React.Component<Props, State> {
             type="submit"
             className="ml-auto"
             variant="primary"
-            label={<FormattedMessage {...m.crop} />}
+            label={cropLabel || 'Crop'}
             icon={mdiScissorsCutting}
           />
         </div>
