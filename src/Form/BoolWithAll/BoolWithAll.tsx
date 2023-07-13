@@ -3,8 +3,6 @@ import { RequiredSymbol } from '../../RequiredSymbol'
 import { ToggleButtonOptions, ToggleButton } from '../../Buttons'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { FormattedMessage } from 'react-intl'
-import { m } from './boolWithAllMessages'
 
 export type BoolWithAllType = 'yes' | 'no' | 'all'
 
@@ -34,6 +32,9 @@ export const BoolWithAllType = {
 }
 
 type Props = Readonly<{
+  yesLabel?: React.ReactNode
+  noLabel?: React.ReactNode
+  allLabel?: React.ReactNode
   name: string
   label: React.ReactNode
   required?: boolean
@@ -41,15 +42,24 @@ type Props = Readonly<{
   className?: string
 }>
 
-export function BoolWithAll({ name, label, required, disabled, className }: Props) {
+export function BoolWithAll({
+  yesLabel,
+  noLabel,
+  allLabel,
+  name,
+  label,
+  required,
+  disabled,
+  className,
+}: Props) {
   return (
     <Field
       name={name}
       render={({ input: { value, onChange }, meta: { touched, error } }) => {
         const options: ToggleButtonOptions<'yes' | 'no' | 'all'> = [
-          { id: 'yes', selected: value === 'yes', label: <FormattedMessage {...m.yes} /> },
-          { id: 'all', selected: value === 'all', label: <FormattedMessage {...m.all} /> },
-          { id: 'no', selected: value === 'no', label: <FormattedMessage {...m.no} /> },
+          { id: 'yes', selected: value === 'yes', label: yesLabel || 'Yes' },
+          { id: 'all', selected: value === 'all', label: allLabel || 'All' },
+          { id: 'no', selected: value === 'no', label: noLabel || 'No' },
         ]
 
         return (

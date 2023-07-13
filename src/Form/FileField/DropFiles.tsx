@@ -1,16 +1,22 @@
 import React from 'react'
 import { useDropzone } from 'react-dropzone'
-import { FormattedMessage } from 'react-intl'
 import cn from 'classnames'
-import { m } from './file-field-messages'
 
 type Props = {
+  dropFilesHereLabel?: React.ReactNode
+  dragAndDropFilesHereLabel?: React.ReactNode
   invalid?: boolean
   disabled?: boolean
   onDrop: (files: ReadonlyArray<File>) => void
 }
 
-export function DropFiles({ invalid, disabled, onDrop }: Props) {
+export function DropFiles({
+  dropFilesHereLabel,
+  dragAndDropFilesHereLabel,
+  invalid,
+  disabled,
+  onDrop,
+}: Props) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ disabled, onDrop })
 
   return (
@@ -24,12 +30,10 @@ export function DropFiles({ invalid, disabled, onDrop }: Props) {
     >
       <input {...getInputProps()} />
       {isDragActive ? (
-        <p className="p-2">
-          <FormattedMessage {...m.dropFilesHere} />
-        </p>
+        <p className="p-2">{dropFilesHereLabel || 'Drop the files here ...'}</p>
       ) : (
         <p className="p-2">
-          <FormattedMessage {...m.dragAndDropFilesHere} />
+          {dragAndDropFilesHereLabel || 'Drag and drop some files here, or click to select files'}
         </p>
       )}
     </div>

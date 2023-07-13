@@ -3,10 +3,10 @@ import { RequiredSymbol } from '../../RequiredSymbol'
 import { ToggleButtonOptions, ToggleButton } from '../../Buttons'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { FormattedMessage } from 'react-intl'
-import { m } from './boolWithAllMessages'
 
 type Props = Readonly<{
+  yesLabel?: React.ReactNode
+  noLabel?: React.ReactNode
   name: string
   label?: React.ReactNode
   required?: boolean
@@ -15,14 +15,23 @@ type Props = Readonly<{
   style?: React.CSSProperties
 }>
 
-export function Bool({ name, label, required, disabled, className, style }: Props) {
+export function Bool({
+  yesLabel,
+  noLabel,
+  name,
+  label,
+  required,
+  disabled,
+  className,
+  style,
+}: Props) {
   return (
     <Field
       name={name}
       render={({ input: { value, onChange }, meta: { touched, error } }) => {
         const options: ToggleButtonOptions<boolean> = [
-          { id: true, selected: value, label: <FormattedMessage {...m.yes} /> },
-          { id: false, selected: !value, label: <FormattedMessage {...m.no} /> },
+          { id: true, selected: value, label: yesLabel || 'Yes' },
+          { id: false, selected: !value, label: noLabel || 'No' },
         ]
 
         return (
