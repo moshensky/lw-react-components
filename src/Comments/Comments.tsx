@@ -1,10 +1,8 @@
 import { Guid } from '../types'
 import classNames from 'classnames'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { Card, CardBody } from '../Card'
 import { Comment } from './Comment'
-import { m } from './comments-messages'
 import { WriteComment } from './WriteComment'
 import { WriteCommentStub } from './WriteCommentStub'
 
@@ -20,6 +18,8 @@ export type Comment = Readonly<{
 export type Comments = ReadonlyArray<Comment>
 
 type Props = Readonly<{
+  calculateRelativeTime: (date: Date) => React.ReactNode
+  addCommentLabel?: React.ReactNode
   className?: string
   comments: Comments
   name: string
@@ -43,6 +43,8 @@ type State =
     }>
 
 export function Comments({
+  calculateRelativeTime,
+  addCommentLabel,
   className,
   comments,
   avatar,
@@ -79,7 +81,7 @@ export function Comments({
   return (
     <Card className={classNames(className, { 'lw-loading-mask': updating })}>
       <CardBody className="space-y-4">
-        {comments.length === 0 && <FormattedMessage {...m.addComment} />}
+        {comments.length === 0 && (addCommentLabel || 'Add comment')}
         {comments.map((x) =>
           state.type === 'edit' && state.commentId === x.id ? (
             <WriteComment
@@ -90,6 +92,7 @@ export function Comments({
             />
           ) : (
             <Comment
+              calculateRelativeTime={calculateRelativeTime}
               key={x.createdAt.toISOString()}
               {...x}
               onDeleteComment={() => handleDeleteComment(x.id)}

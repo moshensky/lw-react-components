@@ -56,14 +56,30 @@ export const notifications: ReadonlyArray<UINotification> = [
 storiesOf('common/Notifications', module)
   .addDecorator(host({}))
   .add('With Unread and Read Notifications', () => (
-    <Notifications notifications={notifications} onDismiss={action('onDismiss')} />
+    <Notifications
+      notifications={notifications}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toISOString()}
+    />
   ))
   .add('With Unread Notifications', () => (
-    <Notifications notifications={notifications.slice(0, 2)} onDismiss={action('onDismiss')} />
+    <Notifications
+      notifications={notifications.slice(0, 2)}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toISOString()}
+    />
   ))
   .add('With Read Notifications', () => (
-    <Notifications notifications={notifications.slice(2)} onDismiss={action('onDismiss')} />
+    <Notifications
+      notifications={notifications.slice(2)}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toISOString()}
+    />
   ))
   .add('With Empty Notifications', () => (
-    <Notifications notifications={[]} onDismiss={action('onDismiss')} />
+    <Notifications
+      notifications={[]}
+      onDismiss={action('onDismiss')}
+      calculateRelativeTime={(x) => x.toISOString()}
+    />
   ))

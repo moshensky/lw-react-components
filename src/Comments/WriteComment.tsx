@@ -1,12 +1,13 @@
 import { isNotEmpty } from '../Form'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { m } from './comments-messages'
 import { Tabs } from '../Tabs'
 import { TextArea } from '../TextArea'
 import { Button } from '../Buttons'
 
 type Props = Readonly<{
+  writeLabel?: React.ReactNode
+  cancelLabel?: React.ReactNode
+  commentLabel?: React.ReactNode
   defaultValue?: string
   onComment: (commentText: string) => void
   onCancel: () => void
@@ -37,7 +38,7 @@ export class WriteComment extends React.Component<Props, State> {
   }
 
   render() {
-    const { onCancel } = this.props
+    const { writeLabel, cancelLabel, commentLabel, onCancel } = this.props
     const { commentText } = this.state
 
     return (
@@ -45,7 +46,7 @@ export class WriteComment extends React.Component<Props, State> {
         <Tabs
           tabs={[
             {
-              header: <FormattedMessage {...m.write} />,
+              header: writeLabel || 'Write',
               content: (
                 <div className="p-2">
                   <div>
@@ -63,13 +64,13 @@ export class WriteComment extends React.Component<Props, State> {
                       className="ml-auto"
                       outline
                       variant="secondary"
-                      label={<FormattedMessage {...m.cancel} />}
+                      label={cancelLabel || 'Cancel'}
                     />
                     <Button
                       onClick={this.handleSubmit}
                       className="ml-1"
                       variant="success"
-                      label={<FormattedMessage {...m.comment} />}
+                      label={commentLabel || 'Comment'}
                     />
                   </div>
                 </div>
