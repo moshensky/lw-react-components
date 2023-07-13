@@ -1,13 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { steps } from '../StepProgressBar/StepProgressBar.stories'
 import { Wizard } from './Wizard'
 
 storiesOf('common/Wizard', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .add('default', () => (
     <Wizard
       title="wizard title"

@@ -1,4 +1,5 @@
-import { Button, Dialog, DialogHeader, DialogFooter, DialogBody } from 'components'
+import { Button } from '../Buttons'
+import { Dialog, DialogHeader, DialogFooter, DialogBody } from '../Dialog'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Variant } from '../Buttons/Button'

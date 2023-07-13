@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/react'
-import { indicatorsSyncModel } from 'components/appViews/Administration/Indicators/indicators-data.support.test'
+import { indicatorsSyncModel } from './VirtualizedList.data.support.test'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { VirtualizedList } from './VirtualizedList'
 import { ListChildComponentProps } from 'react-window'
 
-const data = indicatorsSyncModel.data
+const data = indicatorsSyncModel
 
 const itemToString = (index: number) => {
   const item = data[index]
@@ -20,8 +19,6 @@ const render: (itemInfo: ListChildComponentProps) => React.ReactElement = ({ ind
 )
 
 storiesOf('common/VirtualizedList', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 400 }))
   .add('default', () => (
     <VirtualizedList itemToString={itemToString} renderItem={render} itemCount={data.length} />
@@ -45,7 +42,7 @@ storiesOf('common/VirtualizedList', module)
       renderItem={({ index, style }) => (
         <div
           style={{ ...style, fontSize: 24 }}
-          key={`${indicatorsSyncModel.data[index].indicatorId}`}
+          key={`${indicatorsSyncModel[index].indicatorId}`}
         >
           {itemToString(index)}
         </div>
