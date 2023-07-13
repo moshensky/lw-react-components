@@ -1,0 +1,71 @@
+import { storiesOf } from '@storybook/react'
+import { MemorySize } from 'components'
+import React from 'react'
+import host from 'storybook-host'
+import { dataURLtoFile } from '@limsnow/utils'
+import { setIntlDecorator } from 'utils/storybook'
+
+import { CropperState, CropScaleImage } from './CropScaleImage'
+import { testBase64ImageData } from './test-base64-image-data'
+
+type Props = {}
+
+type State = Readonly<{
+  croppedObjectUrl?: string
+  croppedBlob?: any
+  cropperState: CropperState
+}>
+
+export class TestCropScaleImage extends React.Component<Props, State> {
+  state: State = {
+    cropperState: 'initializing',
+  }
+
+  componentWillUnmount() {
+    const { croppedObjectUrl: cropObjectUrl } = this.state
+    if (cropObjectUrl) {
+      URL.revokeObjectURL(cropObjectUrl)
+    }
+  }
+
+  onCrop = (file: File) => {
+    this.setState({
+      croppedObjectUrl: URL.createObjectURL(file),
+      croppedBlob: file,
+    })
+  }
+
+  onCropperStateChange = (cropperState: CropperState) => {
+    this.setState({ cropperState })
+  }
+
+  render() {
+    const { croppedObjectUrl, croppedBlob, cropperState } = this.state
+
+    return (
+      <>
+        <CropScaleImage
+          file={dataURLtoFile(testBase64ImageData, 'image 1')}
+          maxWidth={2480}
+          onCrop={this.onCrop}
+          onStateChange={this.onCropperStateChange}
+        />
+        <br />
+        Cropper state: {cropperState}
+        <br />
+        {croppedObjectUrl && cropperState === 'initialized' && (
+          <>
+            <MemorySize value={croppedBlob.size} />
+            <img className="rounded" src={croppedObjectUrl} style={{ maxWidth: '100%' }} />
+          </>
+        )}
+        <br />
+      </>
+    )
+  }
+}
+
+storiesOf('common/CropScaleImage', module)
+  .addDecorator(setIntlDecorator('en'))
+  .addDecorator(host({}))
+  .add('default', () => <TestCropScaleImage />, { loki: { skip: true } })

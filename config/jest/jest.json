@@ -1,0 +1,35 @@
+{
+  "testEnvironment": "jsdom",
+  "rootDir": "../../",
+  "coverageDirectory": "<rootDir>/coverage",
+  "moduleFileExtensions": ["js", "json", "jsx", "ts", "tsx"],
+  "coveragePathIgnorePatterns": ["/node_modules/"],
+  "coverageThreshold": {
+    "global": {
+      "statements": 60,
+      "branches": 40,
+      "lines": 60,
+      "functions": 30
+    }
+  },
+  "collectCoverage": false,
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/*.{stories.tsx}"],
+  "testPathIgnorePatterns": ["/node_modules/", ".+support\\.test\\.ts", "/integration/"],
+  "setupFiles": ["<rootDir>/config/jest/jest-setup.ts"],
+  "setupFilesAfterEnv": [
+    "<rootDir>/config/jest/jest-setup-after-env.ts",
+    "pdf-visual-diff/lib/toMatchPdfSnapshot"
+  ],
+  "moduleDirectories": ["node_modules", "../../src"],
+  "moduleNameMapper": {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.ts",
+    "\\.(css|less|scss)$": "<rootDir>/config/jest/styleMock.ts"
+  },
+  "testURL": "http://localhost",
+  "preset": "ts-jest",
+  "globals": {
+    "ts-jest": {
+      "tsconfig": "tsconfig.json"
+    }
+  }
+}
