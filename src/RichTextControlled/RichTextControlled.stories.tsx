@@ -1,15 +1,12 @@
-import {
-  richTextData,
-  richTextSuggestions,
-} from '@limsnow/core-domain/types/rich-text/rich-text.support.test'
-import { RichText, RichText as RichTextT } from '@limsnow/core-domain'
+import { RichText, RichText as RichTextT } from '../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React, { useState } from 'react'
 import host from 'storybook-host'
-import { DelayedData, setIntlDecorator, themeDecorator } from 'utils/storybook'
+import { DelayedData } from '../utils'
 import { RichTextControlled } from './RichTextControlled'
 import { Symbols } from './Symbols'
+import { richTextData, richTextSuggestions } from 'types/rich-text/rich-text.support.test'
 
 const richTextSample1: RichTextT = [
   {
@@ -31,8 +28,6 @@ const WithState = ({
 }
 
 storiesOf('common/RichTextControlled', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(
     host({
       width: '100%',

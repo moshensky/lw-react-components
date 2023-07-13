@@ -1,19 +1,26 @@
 import { mdiClose, mdiMagnify } from '@mdi/js'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { Button } from '../Buttons'
 import { FormDefinition, LWForm } from '../Form'
 import { TableFilter } from './TableFilter'
-import { mc } from 'intl'
 
 type Props<T> = Readonly<{
   formDefinition: LWForm<T>
   className?: string
+  resetFiltersLabel?: React.ReactNode
+  filterLabel?: React.ReactNode
   onFilter: (filter: T) => void
   onReset: () => void
 }>
 
-export function FormDefTableFilter<T>({ formDefinition, className, onFilter, onReset }: Props<T>) {
+export function FormDefTableFilter<T>({
+  formDefinition,
+  className,
+  resetFiltersLabel,
+  filterLabel,
+  onFilter,
+  onReset,
+}: Props<T>) {
   return (
     <TableFilter className={className}>
       <FormDefinition
@@ -31,14 +38,14 @@ export function FormDefTableFilter<T>({ formDefinition, className, onFilter, onR
                   outline
                   onClick={onReset}
                   variant="secondary"
-                  label={<FormattedMessage {...mc.resetFilters} />}
+                  label={resetFiltersLabel || 'Reset filters'}
                   icon={mdiClose}
                 />
                 <Button
                   type="submit"
                   className="ml-1"
                   variant="primary"
-                  label={<FormattedMessage {...mc.filter} />}
+                  label={filterLabel || 'Filter'}
                   icon={mdiMagnify}
                 />
               </div>

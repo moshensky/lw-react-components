@@ -1,4 +1,4 @@
-import { Guid } from '@limsnow/core-domain'
+import { Guid } from '../types'
 
 export class GuidGenerationService {
   static newGuid(ignoreTestEnv = false): Guid {

@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { StepProgressBar, StepProgressBarItem } from './StepProgressBar'
 
 export const steps: ReadonlyArray<StepProgressBarItem> = [
@@ -25,7 +24,5 @@ export const steps: ReadonlyArray<StepProgressBarItem> = [
 ]
 
 storiesOf('common/StepProgressBar', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 600 }))
   .add('default', () => <StepProgressBar steps={steps} />)

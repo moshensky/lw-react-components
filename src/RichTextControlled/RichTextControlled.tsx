@@ -11,12 +11,7 @@ import {
 import { mkCustomEditor, toggleMark } from './custom-editor'
 import { Toolbar } from './Toolbar'
 import isHotkey from 'is-hotkey'
-import {
-  Mark,
-  ParagraphNode,
-  RichText as RichTextT,
-  TextNode,
-} from '@limsnow/core-domain/types/rich-text'
+import { Mark, ParagraphNode, RichText as RichTextT, TextNode } from '../types'
 
 declare module 'slate' {
   interface CustomTypes {

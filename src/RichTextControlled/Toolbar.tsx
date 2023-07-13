@@ -13,7 +13,7 @@ import {
 import { ToolbarButton, ToolbarButtonProps } from './ToolbarButton'
 import { SymbolsButton } from './SymbolsButton'
 import { SuggestionsButton } from './SuggestionsButton'
-import { isRichTextEmpty, RichText } from '@limsnow/core-domain'
+import { isRichTextEmpty, RichText } from '../types'
 
 type Props = Readonly<{
   suggestions?: RichText[]

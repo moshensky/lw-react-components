@@ -1,10 +1,14 @@
-import { CustomerViewModel } from '@limsnow/core-domain'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { Props, Table } from './Table'
+
+export type CustomerViewModel = {
+  id: number
+  name: string
+  uic: string | null
+}
 
 const customerNames: ReadonlyArray<string> = [
   'SIGMA-ALDRICH',
@@ -81,8 +85,6 @@ const baseProps: Props<CustomerViewModel> = {
 }
 
 storiesOf('common/Table/Table', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 650 }))
   .add('default', () => <Table<CustomerViewModel> {...baseProps} />)
   .add('on row click', () => (

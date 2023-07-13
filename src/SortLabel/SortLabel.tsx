@@ -1,4 +1,4 @@
-import { SortDirection, SortItem } from '@limsnow/core-domain'
+import { SortDirection, SortItem } from '../types'
 import { mdiSortAscending, mdiSortDescending } from '@mdi/js'
 import React from 'react'
 import { FaIcon } from '../FaIcon'

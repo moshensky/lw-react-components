@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 import { SortableItem } from './SortableItem'
-import { SortableGroup, WithId } from '@limsnow/core-domain'
+import { SortableGroup, WithId } from '../types'
 
 type Props<T extends WithId> = {
   group: SortableGroup<T>

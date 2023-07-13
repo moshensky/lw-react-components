@@ -1,14 +1,11 @@
-import { SortDirection } from '@limsnow/core-domain'
+import { SortDirection } from '../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { SortLabel } from './SortLabel'
 
 storiesOf('common/SortLabel', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({ width: 300 }))
   .add('default', () => (
     <SortLabel

@@ -1,6 +1,6 @@
 import React from 'react'
 import Transition, { TransitionStatus } from 'react-transition-group/Transition'
-import { theme } from 'theme'
+import { rgba } from '../utils/rgba'
 
 const ANIMATION_DURATION = 150
 
@@ -15,10 +15,11 @@ const transitionStyles: Partial<Record<TransitionStatus, React.CSSProperties>> =
 
 type Props = Readonly<{
   open: boolean
+  backgroundColor?: string
   onClose: () => void
 }>
 
-export function Scrim({ open, onClose }: Props) {
+export function Scrim({ open, backgroundColor, onClose }: Props) {
   return (
     <Transition in={open} timeout={ANIMATION_DURATION}>
       {(state) => (
@@ -32,7 +33,7 @@ export function Scrim({ open, onClose }: Props) {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: theme.utils.rgba(theme.palette.grays.black, 0.6),
+            backgroundColor: rgba(backgroundColor || '#030303', 0.6),
           }}
           onClick={onClose}
         />

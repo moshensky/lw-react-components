@@ -17,7 +17,7 @@ import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 
 import { SortableItem } from './SortableItem'
 import { SortableList } from './SortableList'
-import { SortableGroup, SortableGroups, WithId } from '@limsnow/core-domain'
+import { SortableGroup, SortableGroups, WithId } from '../types'
 
 type Props<T extends WithId> = {
   className?: string

@@ -1,10 +1,9 @@
 import { mdiTrashCanOutline } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { Button } from 'components'
+import { Button } from '../Buttons'
 import React from 'react'
 import host from 'storybook-host'
-import { setIntlDecorator, themeDecorator } from 'utils/storybook'
 import { Tooltip } from './Tooltip'
 
 const button = (
@@ -31,8 +30,6 @@ const body = (
 )
 
 storiesOf('common/Tooltip', module)
-  .addDecorator(themeDecorator)
-  .addDecorator(setIntlDecorator('en'))
   .addDecorator(host({}))
   .add('default', () => <Tooltip tooltip="this is tooltip">{button}</Tooltip>)
   .add('complex', () => <Tooltip tooltip={body}>{button}</Tooltip>)

@@ -29,3 +29,27 @@ export type Guid = string
 export const Guid = {
   of: (value: string) => value as Guid,
 }
+
+/**
+ * Pagination options
+ */
+export type Pager = Readonly<{
+  /**
+   * page number
+   */
+  page: number
+  /**
+   * items per page
+   */
+  count: number
+}>
+
+export enum SortDirection {
+  Asc = 1,
+  Desc = 2,
+}
+
+export type SortItem<T extends string> = Readonly<{
+  name: T
+  direction: SortDirection
+}>
