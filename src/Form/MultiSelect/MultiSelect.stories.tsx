@@ -1,12 +1,10 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { MultiSelect } from './MultiSelect'
 import { options, basic } from '../../MultiSelect/MultiSelect.stories'
 import { StorybookForm } from '../StorybookForm.test.support'
 
 storiesOf('common/Form/MultiSelect', module)
-  .addDecorator(host({}))
   .add('default', () => (
     <StorybookForm>
       <MultiSelect name="some" label="Select values" options={options} />

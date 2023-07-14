@@ -1,10 +1,8 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Card, CardBody, CardFooter, CardHeader } from './Card'
 
 storiesOf('common/Card', module)
-  .addDecorator(host({}))
   .add('card', () => (
     <Card>
       <CardBody>body</CardBody>

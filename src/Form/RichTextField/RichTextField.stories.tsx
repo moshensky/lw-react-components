@@ -1,7 +1,6 @@
 import { mkRichText } from '../../types'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { RichTextField } from './RichTextField'
 
@@ -42,7 +41,7 @@ storiesOf('common/Form/RichTextField', module)
   ))
 
 storiesOf('common/Form/RichTextField', module)
-  .addDecorator(host({ width: 320 }))
+  // .addDecorator(host({ width: 320 }))
   .add('in a fixed width container', () => (
     <StorybookForm
       initialValues={{

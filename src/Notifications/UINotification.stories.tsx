@@ -2,7 +2,6 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { UINotification } from './UINotification'
-import host from 'storybook-host'
 
 const notifications: ReadonlyArray<UINotification> = [
   {
@@ -44,7 +43,6 @@ const notifications: ReadonlyArray<UINotification> = [
 ] as const
 
 storiesOf('common/Notification', module)
-  .addDecorator(host({}))
   .add('Info Notification (Unread)', () => (
     <UINotification
       notification={notifications[0]}

@@ -1,11 +1,10 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { DateTimeField } from './DateTimeField'
 
 storiesOf('common/Form/DateTimeField', module)
-  .addDecorator(host({ width: 400 }))
+  // .addDecorator(host({ width: 400 }))
   .add('default', () => (
     <StorybookForm>
       <DateTimeField name="some" label="Some label" timeCaption="Time" />

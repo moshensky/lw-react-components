@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { ToggleButton, ToggleButtonOptions } from './ToggleButton'
 
 const yesNoOptions: ToggleButtonOptions<'yes' | 'no'> = [
@@ -16,6 +15,5 @@ const yesNoAll: ToggleButtonOptions<'yes' | 'no' | 'all'> = [
 ]
 
 storiesOf('common/Buttons/ToggleButton', module)
-  .addDecorator(host({}))
   .add('yes | no', () => <ToggleButton options={yesNoOptions} onChange={action('onChange')} />)
   .add('yes | no | all', () => <ToggleButton options={yesNoAll} onChange={action('onChange')} />)

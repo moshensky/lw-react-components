@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Props, Table } from './Table'
 
 export type CustomerViewModel = {
@@ -85,7 +84,7 @@ const baseProps: Props<CustomerViewModel> = {
 }
 
 storiesOf('common/Table/Table', module)
-  .addDecorator(host({ width: 650 }))
+  // .addDecorator(host({ width: 650 }))
   .add('default', () => <Table<CustomerViewModel> {...baseProps} />)
   .add('on row click', () => (
     <Table<CustomerViewModel>

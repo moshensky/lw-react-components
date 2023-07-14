@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { MultiSelect } from './MultiSelect'
 import { MultiselectOptions } from './types'
 import { Tag } from './Tag'
@@ -30,14 +29,12 @@ const DelayedData = () => {
 }
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(host({}))
   .add('Tag', () => <Tag label={basic[0].label} onRemoveTag={action('onRemoveTag')} />)
   .add('Tag disabled', () => (
     <Tag label={basic[0].label} disabled onRemoveTag={action('onRemoveTag')} />
   ))
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(host({}))
   .add('invalid', () => (
     <MultiSelect initialSelected={basic} options={options} invalid onChange={action('onChange')} />
   ))
@@ -49,7 +46,7 @@ storiesOf('common/MultiSelect', module)
   ))
 
 storiesOf('common/MultiSelect', module)
-  .addDecorator(host({ width: 160 }))
+  // .addDecorator(host({ width: 160 }))
   .add('fixed width', () => (
     <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />
   ))

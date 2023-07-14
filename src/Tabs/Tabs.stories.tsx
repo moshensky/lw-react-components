@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Tabs } from './Tabs'
 
 const tabs: Tabs = [
@@ -20,7 +19,6 @@ const tabs: Tabs = [
 ]
 
 storiesOf('common/Tabs', module)
-  .addDecorator(host({}))
   .add('default', () => <Tabs tabs={tabs} />)
   .add('common content', () => <Tabs tabs={tabs} commonContent={'something common'} />)
   .add('default tab', () => <Tabs tabs={tabs} defaultSelectedTab={1} />)

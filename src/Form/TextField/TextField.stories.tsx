@@ -1,16 +1,15 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { TextField } from './TextField'
 
 storiesOf('common/Form/TextField', module)
-  .addDecorator(
-    host({
-      width: 300,
-      height: 300,
-    }),
-  )
+  // .addDecorator(
+  //   host({
+  //     width: 300,
+  //     height: 300,
+  //   }),
+  // )
   .add('text field', () => (
     <StorybookForm>
       <TextField name="some_text" label="text input field" />

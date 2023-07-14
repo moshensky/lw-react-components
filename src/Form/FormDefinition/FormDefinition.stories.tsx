@@ -2,7 +2,6 @@ import { RichText } from '../../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { ColumnSample } from './ColumnSample'
 import { RowSample } from './RowSample'
 import { UpdateCalibrationCertificatesForm } from './UpdateCalibrationCertificatesForm'
@@ -30,7 +29,7 @@ const calibrationCertificates: ReadonlyArray<CalibrationCertificate> = range(1, 
 }))
 
 storiesOf('common/Form/FormDefinition', module)
-  .addDecorator(host({ width: 500 }))
+  // .addDecorator(host({ width: 500 }))
   .add('Row', () => (
     <RowSample
       onFilter={action('on save')}
@@ -76,7 +75,7 @@ const idWithNames: ReadonlyArray<LabelWithValue> = [
 ]
 
 storiesOf('common/Form/FormDefinition/FormControl', module)
-  .addDecorator(host({ width: 500 }))
+  // .addDecorator(host({ width: 500 }))
   .add('RadioGroup', () => {
     const formDefinition: LWForm<{ someTestId: number }> = {
       viewType: 'column',

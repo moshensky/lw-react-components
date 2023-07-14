@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { DelayedData } from '../../utils'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { VirtualizedSelectElement } from './components/VirtualizedSelectElement'
@@ -19,7 +18,7 @@ const itemToString = (item: IndicatorViewModel | null) => {
 }
 
 storiesOf('common/Form/VirtualizedSelect', module)
-  .addDecorator(host({ width: 400 }))
+  // .addDecorator(host({ width: 400 }))
   .add('with initial empty state and then updated with data (m)', () => (
     <DelayedData
       data={data}

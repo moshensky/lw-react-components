@@ -2,7 +2,6 @@ import { mkRichText } from '../../types'
 import { storiesOf } from '@storybook/react'
 import { RichTextView } from '../../RichTextView'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { SelectField, Props } from './SelectField'
 
@@ -17,7 +16,7 @@ const props: Props = {
 }
 
 storiesOf('common/Form/SelectField', module)
-  .addDecorator(host({ width: 150 }))
+  // .addDecorator(host({ width: 150 }))
   .add('default', () => (
     <StorybookForm>
       <SelectField {...props} />

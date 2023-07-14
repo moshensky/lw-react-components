@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { TagsSelect } from './TagsSelect'
 
 const options = ['first', 'second', 'third']
 
 storiesOf('common/Form/TagsSelect', module)
-  .addDecorator(host({}))
   .add('default', () => (
     <StorybookForm>
       <TagsSelect name="some" label="Select values" options={options} />

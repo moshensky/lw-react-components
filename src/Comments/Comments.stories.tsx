@@ -2,7 +2,6 @@ import { Guid } from '../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import { Comments } from './Comments'
@@ -35,7 +34,6 @@ const comments: Comments = [
 ]
 
 storiesOf('common/Comments', module)
-  .addDecorator(host({}))
   .add('Comments', () => (
     <Comments
       comments={comments}

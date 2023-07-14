@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { ToastNotifications } from './ToastNotifications'
 import { Toast } from './Toast'
 import { action } from '@storybook/addon-actions'
@@ -19,7 +18,7 @@ const uuids = [
 ]
 
 storiesOf('common/ToastNotification', module)
-  .addDecorator(host({ width: 500, height: 500 }))
+  // .addDecorator(host({ width: 500, height: 500 }))
   .add('all toasts (m)', () => (
     <>
       <Toast type="danger" text="danger toast" />

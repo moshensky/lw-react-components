@@ -2,7 +2,6 @@ import { mdiContentSaveOutline, mdiPlusThick, mdiTrashCanOutline } from '@mdi/js
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Button, Variant } from './Button'
 
 const variants: Variant[] = ['primary', 'secondary', 'success', 'danger', 'warning']
@@ -21,7 +20,6 @@ const mkButtons = (outline?: boolean) =>
   ))
 
 storiesOf('common/Buttons/Button', module)
-  .addDecorator(host({}))
   .add('all (m)', () => (
     <>
       {mkButtons()}

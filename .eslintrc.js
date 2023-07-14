@@ -3,13 +3,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
   rules: {
     // TODO: fixme
     '@typescript-eslint/ban-types': 'off',
@@ -31,18 +25,15 @@ module.exports = {
     // TODO: no console, deprecated, functional (no let, readonly, no mutation), no-shadowed-variable
     // no floating promises,  no-expression-statement,
     'no-restricted-imports': 'off',
-    '@typescript-eslint/no-restricted-imports': [
-      'warn',
-      {
-        name: 'react-redux',
-        importNames: ['useSelector', 'useDispatch'],
-        message: 'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
-      },
-    ],
+    '@typescript-eslint/no-restricted-imports': ['warn', {
+      name: 'react-redux',
+      importNames: ['useSelector', 'useDispatch'],
+      message: 'Use typed hooks `useAppDispatch` and `useAppSelector` instead.'
+    }]
   },
   settings: {
     react: {
-      version: '16.12.0',
-    },
-  },
-}
+      version: '16.12.0'
+    }
+  }
+};

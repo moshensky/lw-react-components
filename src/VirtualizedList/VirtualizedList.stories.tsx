@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react'
 import { indicatorsSyncModel } from './VirtualizedList.data.support.test'
 import React from 'react'
-import host from 'storybook-host'
 import { VirtualizedList } from './VirtualizedList'
 import { ListChildComponentProps } from 'react-window'
 
@@ -19,7 +18,7 @@ const render: (itemInfo: ListChildComponentProps) => React.ReactElement = ({ ind
 )
 
 storiesOf('common/VirtualizedList', module)
-  .addDecorator(host({ width: 400 }))
+  // .addDecorator(host({ width: 400 }))
   .add('default', () => (
     <VirtualizedList itemToString={itemToString} renderItem={render} itemCount={data.length} />
   ))

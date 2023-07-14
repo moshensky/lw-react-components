@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Button } from '../Buttons'
 import React from 'react'
-import host from 'storybook-host'
 import { Popover } from './Popover'
 
 const trigger = (show: () => void) => (
@@ -23,7 +22,6 @@ const body = (hide: () => void) => (
 )
 
 storiesOf('common/Popover', module)
-  .addDecorator(host({}))
   .add('default (m)', () => <Popover trigger={trigger} header={() => 'title'} body={body} />)
   .add('x3 (m)', () => (
     <>

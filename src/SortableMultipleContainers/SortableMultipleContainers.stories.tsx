@@ -2,7 +2,6 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { SortableMultipleContainers } from './SortableMultipleContainers'
-import host from 'storybook-host'
 import { SortableGroups } from '../types'
 
 const mkItem = (xs: string[]) => xs.map((id) => ({ id, index: `${id}-index` }))
@@ -37,12 +36,12 @@ const containerStyle = {
 }
 
 storiesOf('common/SortableMultipleContainers', module)
-  .addDecorator(
-    host({
-      width: '100%',
-      height: '100%',
-    }),
-  )
+  // .addDecorator(
+  //   host({
+  //     width: '100%',
+  //     height: '100%',
+  //   }),
+  // )
   .add('base', () => (
     <SortableMultipleContainers
       groups={groups}

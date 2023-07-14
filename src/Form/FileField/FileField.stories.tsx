@@ -1,11 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { FileField } from './FileField'
 
 storiesOf('common/Form/FileField', module)
-  .addDecorator(host({}))
   .add('append', () => (
     <StorybookForm>
       <FileField

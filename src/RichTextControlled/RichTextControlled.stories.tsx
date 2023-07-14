@@ -2,7 +2,6 @@ import { RichText, RichText as RichTextT } from '../types'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React, { useState } from 'react'
-import host from 'storybook-host'
 import { DelayedData } from '../utils'
 import { RichTextControlled } from './RichTextControlled'
 import { Symbols } from './Symbols'
@@ -28,11 +27,11 @@ const WithState = ({
 }
 
 storiesOf('common/RichTextControlled', module)
-  .addDecorator(
-    host({
-      width: '100%',
-    }),
-  )
+  // .addDecorator(
+  //   host({
+  //     width: '100%',
+  //   }),
+  // )
   .add('basic', () => (
     <WithState
       render={(set, val) => (

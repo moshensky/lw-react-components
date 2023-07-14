@@ -1,11 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { StorybookForm } from '../StorybookForm.test.support'
 import { Bool } from './Bool'
 
 storiesOf('common/Form/Bool', module)
-  .addDecorator(host({}))
   .add('default', () => (
     <StorybookForm>
       <Bool name="some" label="Active" />

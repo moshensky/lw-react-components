@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Button } from '../Buttons'
 import React from 'react'
-import host from 'storybook-host'
 import { Tooltip } from './Tooltip'
 
 const button = (
@@ -30,6 +29,5 @@ const body = (
 )
 
 storiesOf('common/Tooltip', module)
-  .addDecorator(host({}))
   .add('default', () => <Tooltip tooltip="this is tooltip">{button}</Tooltip>)
   .add('complex', () => <Tooltip tooltip={body}>{button}</Tooltip>)

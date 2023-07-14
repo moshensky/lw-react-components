@@ -2,11 +2,10 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Form } from 'react-final-form'
-import host from 'storybook-host'
 import { DateField } from './DateTimeField'
 
 storiesOf('common/Form/DateField', module)
-  .addDecorator(host({ width: 400 }))
+  // .addDecorator(host({ width: 400 }))
   .add('default', () => (
     <Form
       onSubmit={action('on form submit')}

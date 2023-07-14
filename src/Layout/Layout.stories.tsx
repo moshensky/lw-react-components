@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import host from 'storybook-host'
 import { Container } from './Container'
 import { MainContent } from './MainContent'
 import { MainHead } from './MainHead'
 
 storiesOf('common/Layout', module)
-  .addDecorator(host({ width: 650, height: 400 }))
+  // .addDecorator(host({ width: 650, height: 400 }))
   .add('default', () => (
     <Container>
       <MainHead title="Title">main head children</MainHead>
