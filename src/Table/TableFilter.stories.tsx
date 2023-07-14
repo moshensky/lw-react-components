@@ -1,6 +1,12 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { TableFilter } from './TableFilter'
 
-storiesOf('common/Table/TableFilter', module)
-  .add('default', () => <TableFilter>table filter</TableFilter>)
+export default {
+  title: 'common/Table/TableFilter',
+}
+
+export const Default = () => <TableFilter>table filter</TableFilter>
+
+Default.story = {
+  name: 'default',
+}

@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import { indicatorsSyncModel } from './VirtualizedList.data.support.test'
 import React from 'react'
 import { VirtualizedList } from './VirtualizedList'
@@ -17,34 +16,47 @@ const render: (itemInfo: ListChildComponentProps) => React.ReactElement = ({ ind
   </div>
 )
 
-storiesOf('common/VirtualizedList', module)
-  // .addDecorator(host({ width: 400 }))
-  .add('default', () => (
-    <VirtualizedList itemToString={itemToString} renderItem={render} itemCount={data.length} />
-  ))
-  .add('height', () => (
-    <VirtualizedList
-      itemToString={itemToString}
-      height={500}
-      renderItem={render}
-      itemCount={data.length}
-    />
-  ))
-  .add('custom style and render', () => (
-    <VirtualizedList
-      itemCount={data.length}
-      itemToString={itemToString}
-      applyMeasureDivStyle={() => ({
-        paddingBottom: '8px',
-        fontSize: '24px',
-      })}
-      renderItem={({ index, style }) => (
-        <div
-          style={{ ...style, fontSize: 24 }}
-          key={`${indicatorsSyncModel[index].indicatorId}`}
-        >
-          {itemToString(index)}
-        </div>
-      )}
-    />
-  ))
+export default {
+  title: 'common/VirtualizedList',
+}
+
+export const Default = () => (
+  <VirtualizedList itemToString={itemToString} renderItem={render} itemCount={data.length} />
+)
+
+Default.story = {
+  name: 'default',
+}
+
+export const Height = () => (
+  <VirtualizedList
+    itemToString={itemToString}
+    height={500}
+    renderItem={render}
+    itemCount={data.length}
+  />
+)
+
+Height.story = {
+  name: 'height',
+}
+
+export const CustomStyleAndRender = () => (
+  <VirtualizedList
+    itemCount={data.length}
+    itemToString={itemToString}
+    applyMeasureDivStyle={() => ({
+      paddingBottom: '8px',
+      fontSize: '24px',
+    })}
+    renderItem={({ index, style }) => (
+      <div style={{ ...style, fontSize: 24 }} key={`${indicatorsSyncModel[index].indicatorId}`}>
+        {itemToString(index)}
+      </div>
+    )}
+  />
+)
+
+CustomStyleAndRender.story = {
+  name: 'custom style and render',
+}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import { UINotification } from './UINotification'
 
 const notifications: ReadonlyArray<UINotification> = [
@@ -42,41 +41,68 @@ const notifications: ReadonlyArray<UINotification> = [
   },
 ] as const
 
-storiesOf('common/Notification', module)
-  .add('Info Notification (Unread)', () => (
+export default {
+  title: 'common/Notification',
+}
+
+export const InfoNotificationUnread = () => (
+  <UINotification
+    notification={notifications[0]}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toDateString()}
+  />
+)
+
+InfoNotificationUnread.story = {
+  name: 'Info Notification (Unread)',
+}
+
+export const InfoNotificationRead = () => (
+  <UINotification
+    notification={{ ...notifications[0], read: true }}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toDateString()}
+  />
+)
+
+InfoNotificationRead.story = {
+  name: 'Info Notification (Read)',
+}
+
+export const WarningNotificationUnread = () => (
+  <UINotification
+    notification={notifications[1]}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toDateString()}
+  />
+)
+
+WarningNotificationUnread.story = {
+  name: 'Warning Notification (Unread)',
+}
+
+export const DangerNotificationRead = () => (
+  <UINotification
+    notification={notifications[2]}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toDateString()}
+  />
+)
+
+DangerNotificationRead.story = {
+  name: 'Danger Notification (Read)',
+}
+
+export const SuccessNotificationRead = () => (
+  <div style={{ width: 400 }}>
     <UINotification
-      notification={notifications[0]}
+      notification={notifications[3]}
       onDismiss={action('onDismiss')}
       calculateRelativeTime={(x) => x.toDateString()}
     />
-  ))
-  .add('Info Notification (Read)', () => (
-    <UINotification
-      notification={{ ...notifications[0], read: true }}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toDateString()}
-    />
-  ))
-  .add('Warning Notification (Unread)', () => (
-    <UINotification
-      notification={notifications[1]}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toDateString()}
-    />
-  ))
-  .add('Danger Notification (Read)', () => (
-    <UINotification
-      notification={notifications[2]}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toDateString()}
-    />
-  ))
-  .add('Success Notification (Read)', () => (
-    <div style={{ width: 400 }}>
-      <UINotification
-        notification={notifications[3]}
-        onDismiss={action('onDismiss')}
-        calculateRelativeTime={(x) => x.toDateString()}
-      />
-    </div>
-  ))
+  </div>
+)
+
+SuccessNotificationRead.story = {
+  name: 'Success Notification (Read)',
+}

@@ -1,5 +1,4 @@
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { MultiSelect } from './MultiSelect'
 import { MultiselectOptions } from './types'
@@ -28,42 +27,79 @@ const DelayedData = () => {
   return <MultiSelect initialSelected={[]} options={items} onChange={action('onChange')} />
 }
 
-storiesOf('common/MultiSelect', module)
-  .add('Tag', () => <Tag label={basic[0].label} onRemoveTag={action('onRemoveTag')} />)
-  .add('Tag disabled', () => (
-    <Tag label={basic[0].label} disabled onRemoveTag={action('onRemoveTag')} />
-  ))
+export default {
+  title: 'common/MultiSelect',
+  excludeStories: ['basic', 'options'],
+}
 
-storiesOf('common/MultiSelect', module)
-  .add('invalid', () => (
-    <MultiSelect initialSelected={basic} options={options} invalid onChange={action('onChange')} />
-  ))
-  .add('disabled', () => (
-    <MultiSelect initialSelected={basic} options={options} disabled onChange={action('onChange')} />
-  ))
-  .add('100% width', () => (
-    <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />
-  ))
+export const _Tag = () => <Tag label={basic[0].label} onRemoveTag={action('onRemoveTag')} />
 
-storiesOf('common/MultiSelect', module)
-  // .addDecorator(host({ width: 160 }))
-  .add('fixed width', () => (
-    <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />
-  ))
-  .add('disabled empty', () => (
-    <MultiSelect initialSelected={[]} options={options} disabled onChange={action('onChange')} />
-  ))
-  .add('select with initial empty state and then updated with data (m)', () => <DelayedData />)
-  .add('selected items should not be present in options', () => {
-    const selected: MultiselectOptions = ['second'].map((x) => ({
-      id: `id_${x}`,
-      label: x,
-    }))
-    const options: MultiselectOptions = ['first', 'second', 'third'].map((x) => ({
-      id: `id_${x}`,
-      label: x,
-    }))
-    return (
-      <MultiSelect initialSelected={selected} options={options} onChange={action('onChange')} />
-    )
-  })
+export const TagDisabled = () => (
+  <Tag label={basic[0].label} disabled onRemoveTag={action('onRemoveTag')} />
+)
+
+TagDisabled.story = {
+  name: 'Tag disabled',
+}
+
+export const Invalid = () => (
+  <MultiSelect initialSelected={basic} options={options} invalid onChange={action('onChange')} />
+)
+
+Invalid.story = {
+  name: 'invalid',
+}
+
+export const Disabled = () => (
+  <MultiSelect initialSelected={basic} options={options} disabled onChange={action('onChange')} />
+)
+
+Disabled.story = {
+  name: 'disabled',
+}
+
+export const _100Width = () => (
+  <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />
+)
+
+_100Width.story = {
+  name: '100% width',
+}
+
+export const FixedWidth = () => (
+  <MultiSelect initialSelected={basic} options={options} onChange={action('onChange')} />
+)
+
+FixedWidth.story = {
+  name: 'fixed width',
+}
+
+export const DisabledEmpty = () => (
+  <MultiSelect initialSelected={[]} options={options} disabled onChange={action('onChange')} />
+)
+
+DisabledEmpty.story = {
+  name: 'disabled empty',
+}
+
+export const SelectWithInitialEmptyStateAndThenUpdatedWithDataM = () => <DelayedData />
+
+SelectWithInitialEmptyStateAndThenUpdatedWithDataM.story = {
+  name: 'select with initial empty state and then updated with data (m)',
+}
+
+export const SelectedItemsShouldNotBePresentInOptions = () => {
+  const selected: MultiselectOptions = ['second'].map((x) => ({
+    id: `id_${x}`,
+    label: x,
+  }))
+  const options: MultiselectOptions = ['first', 'second', 'third'].map((x) => ({
+    id: `id_${x}`,
+    label: x,
+  }))
+  return <MultiSelect initialSelected={selected} options={options} onChange={action('onChange')} />
+}
+
+SelectedItemsShouldNotBePresentInOptions.story = {
+  name: 'selected items should not be present in options',
+}

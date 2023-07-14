@@ -1,5 +1,4 @@
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { SortableMultipleContainers } from './SortableMultipleContainers'
 import { SortableGroups } from '../types'
@@ -35,29 +34,30 @@ const containerStyle = {
   flex: 1,
 }
 
-storiesOf('common/SortableMultipleContainers', module)
-  // .addDecorator(
-  //   host({
-  //     width: '100%',
-  //     height: '100%',
-  //   }),
-  // )
-  .add('base', () => (
-    <SortableMultipleContainers
-      groups={groups}
-      onGroupRender={(group, setNodeRef, items) => (
-        <div>
-          <h2>{group.name}</h2>
-          <div ref={setNodeRef} style={containerStyle}>
-            {items}
-          </div>
+export default {
+  title: 'common/SortableMultipleContainers',
+}
+
+export const Base = () => (
+  <SortableMultipleContainers
+    groups={groups}
+    onGroupRender={(group, setNodeRef, items) => (
+      <div>
+        <h2>{group.name}</h2>
+        <div ref={setNodeRef} style={containerStyle}>
+          {items}
         </div>
-      )}
-      onItemRender={(item) => (
-        <>
-          Item {item.id} with index {item.index}
-        </>
-      )}
-      onChange={action('onChange')}
-    />
-  ))
+      </div>
+    )}
+    onItemRender={(item) => (
+      <>
+        Item {item.id} with index {item.index}
+      </>
+    )}
+    onChange={action('onChange')}
+  />
+)
+
+Base.story = {
+  name: 'base',
+}

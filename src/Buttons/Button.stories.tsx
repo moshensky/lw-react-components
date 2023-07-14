@@ -1,6 +1,5 @@
 import { mdiContentSaveOutline, mdiPlusThick, mdiTrashCanOutline } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Button, Variant } from './Button'
 
@@ -19,47 +18,69 @@ const mkButtons = (outline?: boolean) =>
     />
   ))
 
-storiesOf('common/Buttons/Button', module)
-  .add('all (m)', () => (
-    <>
-      {mkButtons()}
-      <br />
-      <div className="mt-1">{mkButtons(true)}</div>
-      <br />
-      <Button
-        outline
-        variant="primary"
-        icon={mdiContentSaveOutline}
-        title="just icon"
-        onClick={action('onClick')}
-      />
-    </>
-  ))
-  .add('delete button', () => (
+export default {
+  title: 'common/Buttons/Button',
+}
+
+export const AllM = () => (
+  <>
+    {mkButtons()}
+    <br />
+    <div className="mt-1">{mkButtons(true)}</div>
+    <br />
     <Button
       outline
-      variant="danger"
-      icon={mdiTrashCanOutline}
-      title={'delete'}
-      onClick={action('on delete')}
-    />
-  ))
-  .add('delete button with label', () => (
-    <Button
-      outline
-      label="delete"
-      variant="danger"
-      icon={mdiTrashCanOutline}
-      title={'delete'}
-      onClick={action('on delete')}
-    />
-  ))
-  .add('add', () => (
-    <Button
-      className="ml-3"
+      variant="primary"
+      icon={mdiContentSaveOutline}
+      title="just icon"
       onClick={action('onClick')}
-      variant="success"
-      label="Add"
-      icon={mdiPlusThick}
     />
-  ))
+  </>
+)
+
+AllM.story = {
+  name: 'all (m)',
+}
+
+export const DeleteButton = () => (
+  <Button
+    outline
+    variant="danger"
+    icon={mdiTrashCanOutline}
+    title={'delete'}
+    onClick={action('on delete')}
+  />
+)
+
+DeleteButton.story = {
+  name: 'delete button',
+}
+
+export const DeleteButtonWithLabel = () => (
+  <Button
+    outline
+    label="delete"
+    variant="danger"
+    icon={mdiTrashCanOutline}
+    title={'delete'}
+    onClick={action('on delete')}
+  />
+)
+
+DeleteButtonWithLabel.story = {
+  name: 'delete button with label',
+}
+
+export const Add = () => (
+  <Button
+    className="ml-3"
+    onClick={action('onClick')}
+    variant="success"
+    label="Add"
+    icon={mdiPlusThick}
+  />
+)
+
+Add.story = {
+  name: 'add',
+}

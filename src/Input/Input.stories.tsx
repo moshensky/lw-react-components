@@ -1,8 +1,24 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Input } from './Input'
 
-storiesOf('common/Input', module)
-  .add('default', () => <Input />)
-  .add('disabled', () => <Input disabled value="disabled input" />)
-  .add('invalid', () => <Input invalid />)
+export default {
+  title: 'common/Input',
+}
+
+export const Default = () => <Input />
+
+Default.story = {
+  name: 'default',
+}
+
+export const Disabled = () => <Input disabled value="disabled input" />
+
+Disabled.story = {
+  name: 'disabled',
+}
+
+export const Invalid = () => <Input invalid />
+
+Invalid.story = {
+  name: 'invalid',
+}

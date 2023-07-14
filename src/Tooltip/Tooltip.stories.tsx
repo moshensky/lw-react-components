@@ -1,6 +1,5 @@
 import { mdiTrashCanOutline } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import { Button } from '../Buttons'
 import React from 'react'
 import { Tooltip } from './Tooltip'
@@ -28,6 +27,18 @@ const body = (
   </div>
 )
 
-storiesOf('common/Tooltip', module)
-  .add('default', () => <Tooltip tooltip="this is tooltip">{button}</Tooltip>)
-  .add('complex', () => <Tooltip tooltip={body}>{button}</Tooltip>)
+export default {
+  title: 'common/Tooltip',
+}
+
+export const Default = () => <Tooltip tooltip="this is tooltip">{button}</Tooltip>
+
+Default.story = {
+  name: 'default',
+}
+
+export const Complex = () => <Tooltip tooltip={body}>{button}</Tooltip>
+
+Complex.story = {
+  name: 'complex',
+}

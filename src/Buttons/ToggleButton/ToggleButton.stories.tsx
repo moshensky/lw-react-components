@@ -1,5 +1,4 @@
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { ToggleButton, ToggleButtonOptions } from './ToggleButton'
 
@@ -14,6 +13,18 @@ const yesNoAll: ToggleButtonOptions<'yes' | 'no' | 'all'> = [
   { id: 'all', selected: true, label: 'all' },
 ]
 
-storiesOf('common/Buttons/ToggleButton', module)
-  .add('yes | no', () => <ToggleButton options={yesNoOptions} onChange={action('onChange')} />)
-  .add('yes | no | all', () => <ToggleButton options={yesNoAll} onChange={action('onChange')} />)
+export default {
+  title: 'common/Buttons/ToggleButton',
+}
+
+export const YesNo = () => <ToggleButton options={yesNoOptions} onChange={action('onChange')} />
+
+YesNo.story = {
+  name: 'yes | no',
+}
+
+export const YesNoAll = () => <ToggleButton options={yesNoAll} onChange={action('onChange')} />
+
+YesNoAll.story = {
+  name: 'yes | no | all',
+}

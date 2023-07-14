@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import { MemorySize } from '../MemorySize'
 import React from 'react'
 import { dataURLtoFile } from '../utils'
@@ -63,5 +62,14 @@ export class TestCropScaleImage extends React.Component<Props, State> {
   }
 }
 
-storiesOf('common/CropScaleImage', module)
-  .add('default', () => <TestCropScaleImage />, { loki: { skip: true } })
+export default {
+  title: 'common/CropScaleImage',
+  excludeStories: ['TestCropScaleImage'],
+}
+
+export const Default = () => <TestCropScaleImage />
+
+Default.story = {
+  name: 'default',
+  parameters: { loki: { skip: true } },
+}

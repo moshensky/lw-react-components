@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { EditableRichTextWithTooltip, Props } from './EditableRichTextWithTooltip'
 import { action } from '@storybook/addon-actions'
@@ -10,7 +9,24 @@ const baseProps: Props = {
   onTextUpdate: action('onTextUpdate'),
 }
 
-storiesOf('common/EditableRichTextWithTooltip', module)
-  .add('base', () => <EditableRichTextWithTooltip {...baseProps} disabled={false} />)
-  .add('disabled rich text', () => <EditableRichTextWithTooltip {...baseProps} disableRichText />)
-  .add('disabled', () => <EditableRichTextWithTooltip {...baseProps} disabled />)
+export default {
+  title: 'common/EditableRichTextWithTooltip',
+}
+
+export const Base = () => <EditableRichTextWithTooltip {...baseProps} disabled={false} />
+
+Base.story = {
+  name: 'base',
+}
+
+export const DisabledRichText = () => <EditableRichTextWithTooltip {...baseProps} disableRichText />
+
+DisabledRichText.story = {
+  name: 'disabled rich text',
+}
+
+export const Disabled = () => <EditableRichTextWithTooltip {...baseProps} disabled />
+
+Disabled.story = {
+  name: 'disabled',
+}

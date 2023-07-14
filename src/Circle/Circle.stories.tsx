@@ -1,10 +1,16 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Circle } from './Circle'
 
-storiesOf('common/Circle', module)
-  .add('default', () => (
-    <div className="bg-black">
-      <Circle>simple </Circle>
-    </div>
-  ))
+export default {
+  title: 'common/Circle',
+}
+
+export const Default = () => (
+  <div className="bg-black">
+    <Circle>simple </Circle>
+  </div>
+)
+
+Default.story = {
+  name: 'default',
+}

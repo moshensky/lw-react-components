@@ -1,8 +1,24 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { TextArea } from './TextArea'
 
-storiesOf('common/TextArea', module)
-  .add('default', () => <TextArea />)
-  .add('disabled', () => <TextArea disabled value="disabled text area" />)
-  .add('invalid', () => <TextArea invalid />)
+export default {
+  title: 'common/TextArea',
+}
+
+export const Default = () => <TextArea />
+
+Default.story = {
+  name: 'default',
+}
+
+export const Disabled = () => <TextArea disabled value="disabled text area" />
+
+Disabled.story = {
+  name: 'disabled',
+}
+
+export const Invalid = () => <TextArea invalid />
+
+Invalid.story = {
+  name: 'invalid',
+}

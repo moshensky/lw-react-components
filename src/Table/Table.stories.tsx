@@ -1,5 +1,4 @@
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { Props, Table } from './Table'
 
@@ -83,77 +82,129 @@ const baseProps: Props<CustomerViewModel> = {
   ),
 }
 
-storiesOf('common/Table/Table', module)
-  // .addDecorator(host({ width: 650 }))
-  .add('default', () => <Table<CustomerViewModel> {...baseProps} />)
-  .add('on row click', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      onRowSelect={action('on row click')}
-      render={(x) => (
-        <>
-          <td>{x.name}</td>
-          <td>{x.uic}</td>
-        </>
-      )}
-    />
-  ))
-  .add('selectable', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      render={(x) => (
-        <>
-          <td>{x.name}</td>
-          <td>{x.uic}</td>
-        </>
-      )}
-      selectable={(x) => x.id === 3}
-    />
-  ))
-  .add('pagination local', () => (
-    <Table<CustomerViewModel> {...baseProps} pagination={{ type: 'local' }} />
-  ))
-  .add('pagination remote', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      pagination={{
-        type: 'remote',
-        onGridPagerChange: action('onGridPagerChange'),
-        itemsPerPage: 50,
-        pageNumber: 3,
-        totalItemsCount: 3001,
-      }}
-    />
-  ))
-  .add('row class', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      setRowClassName={(x) => (x.id % 2 === 0 ? 'bg-green-500' : 'bg-red-500')}
-    />
-  ))
-  .add('loadable loading', () => (
-    <Table<CustomerViewModel> {...baseProps} data={{ status: 'loading' }} />
-  ))
-  .add('loadable updating', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      data={{ status: 'updating', item: customers.slice(0, 10) }}
-      filter={
-        <div>
-          <h1>Filter body</h1>
-        </div>
-      }
-    />
-  ))
-  .add('loadable loaded', () => (
-    <Table<CustomerViewModel> {...baseProps} data={{ status: 'loaded', item: customers }} />
-  ))
-  .add('loadable error', () => (
-    <Table<CustomerViewModel>
-      {...baseProps}
-      data={{
-        status: 'failure',
-        failure: 'failure reasons is some failure',
-      }}
-    />
-  ))
+export default {
+  title: 'common/Table/Table',
+  excludeStories: ['CustomerViewModel', 'customers'],
+}
+
+export const Default = () => <Table<CustomerViewModel> {...baseProps} />
+
+Default.story = {
+  name: 'default',
+}
+
+export const OnRowClick = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    onRowSelect={action('on row click')}
+    render={(x) => (
+      <>
+        <td>{x.name}</td>
+        <td>{x.uic}</td>
+      </>
+    )}
+  />
+)
+
+OnRowClick.story = {
+  name: 'on row click',
+}
+
+export const Selectable = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    render={(x) => (
+      <>
+        <td>{x.name}</td>
+        <td>{x.uic}</td>
+      </>
+    )}
+    selectable={(x) => x.id === 3}
+  />
+)
+
+Selectable.story = {
+  name: 'selectable',
+}
+
+export const PaginationLocal = () => (
+  <Table<CustomerViewModel> {...baseProps} pagination={{ type: 'local' }} />
+)
+
+PaginationLocal.story = {
+  name: 'pagination local',
+}
+
+export const PaginationRemote = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    pagination={{
+      type: 'remote',
+      onGridPagerChange: action('onGridPagerChange'),
+      itemsPerPage: 50,
+      pageNumber: 3,
+      totalItemsCount: 3001,
+    }}
+  />
+)
+
+PaginationRemote.story = {
+  name: 'pagination remote',
+}
+
+export const RowClass = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    setRowClassName={(x) => (x.id % 2 === 0 ? 'bg-green-500' : 'bg-red-500')}
+  />
+)
+
+RowClass.story = {
+  name: 'row class',
+}
+
+export const LoadableLoading = () => (
+  <Table<CustomerViewModel> {...baseProps} data={{ status: 'loading' }} />
+)
+
+LoadableLoading.story = {
+  name: 'loadable loading',
+}
+
+export const LoadableUpdating = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    data={{ status: 'updating', item: customers.slice(0, 10) }}
+    filter={
+      <div>
+        <h1>Filter body</h1>
+      </div>
+    }
+  />
+)
+
+LoadableUpdating.story = {
+  name: 'loadable updating',
+}
+
+export const LoadableLoaded = () => (
+  <Table<CustomerViewModel> {...baseProps} data={{ status: 'loaded', item: customers }} />
+)
+
+LoadableLoaded.story = {
+  name: 'loadable loaded',
+}
+
+export const LoadableError = () => (
+  <Table<CustomerViewModel>
+    {...baseProps}
+    data={{
+      status: 'failure',
+      failure: 'failure reasons is some failure',
+    }}
+  />
+)
+
+LoadableError.story = {
+  name: 'loadable error',
+}

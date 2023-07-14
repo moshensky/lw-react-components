@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Notifications } from './Notifications'
 import { UINotification } from './UINotification'
@@ -52,32 +51,43 @@ export const notifications: ReadonlyArray<UINotification> = [
   },
 ] as const
 
-storiesOf('common/Notifications', module)
-  .add('With Unread and Read Notifications', () => (
-    <Notifications
-      notifications={notifications}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toISOString()}
-    />
-  ))
-  .add('With Unread Notifications', () => (
-    <Notifications
-      notifications={notifications.slice(0, 2)}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toISOString()}
-    />
-  ))
-  .add('With Read Notifications', () => (
-    <Notifications
-      notifications={notifications.slice(2)}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toISOString()}
-    />
-  ))
-  .add('With Empty Notifications', () => (
-    <Notifications
-      notifications={[]}
-      onDismiss={action('onDismiss')}
-      calculateRelativeTime={(x) => x.toISOString()}
-    />
-  ))
+export default {
+  title: 'common/Notifications',
+  excludeStories: ['notifications'],
+}
+
+export const WithUnreadAndReadNotifications = () => (
+  <Notifications
+    notifications={notifications}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toISOString()}
+  />
+)
+
+WithUnreadAndReadNotifications.story = {
+  name: 'With Unread and Read Notifications',
+}
+
+export const WithUnreadNotifications = () => (
+  <Notifications
+    notifications={notifications.slice(0, 2)}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toISOString()}
+  />
+)
+
+export const WithReadNotifications = () => (
+  <Notifications
+    notifications={notifications.slice(2)}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toISOString()}
+  />
+)
+
+export const WithEmptyNotifications = () => (
+  <Notifications
+    notifications={[]}
+    onDismiss={action('onDismiss')}
+    calculateRelativeTime={(x) => x.toISOString()}
+  />
+)

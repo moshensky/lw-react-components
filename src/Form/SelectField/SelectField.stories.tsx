@@ -1,5 +1,4 @@
 import { mkRichText } from '../../types'
-import { storiesOf } from '@storybook/react'
 import { RichTextView } from '../../RichTextView'
 import React from 'react'
 import { StorybookForm } from '../StorybookForm.test.support'
@@ -15,40 +14,76 @@ const props: Props = {
   label: 'select label',
 }
 
-storiesOf('common/Form/SelectField', module)
-  // .addDecorator(host({ width: 150 }))
-  .add('default', () => (
-    <StorybookForm>
-      <SelectField {...props} />
-    </StorybookForm>
-  ))
-  .add('required', () => (
-    <StorybookForm>
-      <SelectField {...props} required />
-    </StorybookForm>
-  ))
-  .add('selected', () => (
-    <StorybookForm initialValues={{ some: 'second' }}>
-      <SelectField {...props} />
-    </StorybookForm>
-  ))
-  .add('rich text selected', () => (
-    <StorybookForm initialValues={{ some: 'third' }}>
-      <SelectField {...props} />
-    </StorybookForm>
-  ))
-  .add('disabled', () => (
-    <StorybookForm>
-      <SelectField {...props} disabled />
-    </StorybookForm>
-  ))
-  .add('selected with selected', () => (
-    <StorybookForm initialValues={{ some: 'second' }}>
-      <SelectField {...props} disabled />
-    </StorybookForm>
-  ))
-  .add('error', () => (
-    <StorybookForm error>
-      <SelectField {...props} required />
-    </StorybookForm>
-  ))
+export default {
+  title: 'common/Form/SelectField',
+}
+
+export const Default = () => (
+  <StorybookForm>
+    <SelectField {...props} />
+  </StorybookForm>
+)
+
+Default.story = {
+  name: 'default',
+}
+
+export const Required = () => (
+  <StorybookForm>
+    <SelectField {...props} required />
+  </StorybookForm>
+)
+
+Required.story = {
+  name: 'required',
+}
+
+export const Selected = () => (
+  <StorybookForm initialValues={{ some: 'second' }}>
+    <SelectField {...props} />
+  </StorybookForm>
+)
+
+Selected.story = {
+  name: 'selected',
+}
+
+export const RichTextSelected = () => (
+  <StorybookForm initialValues={{ some: 'third' }}>
+    <SelectField {...props} />
+  </StorybookForm>
+)
+
+RichTextSelected.story = {
+  name: 'rich text selected',
+}
+
+export const Disabled = () => (
+  <StorybookForm>
+    <SelectField {...props} disabled />
+  </StorybookForm>
+)
+
+Disabled.story = {
+  name: 'disabled',
+}
+
+export const SelectedWithSelected = () => (
+  <StorybookForm initialValues={{ some: 'second' }}>
+    <SelectField {...props} disabled />
+  </StorybookForm>
+)
+
+SelectedWithSelected.story = {
+  name: 'selected with selected',
+}
+
+export const Error = () => (
+  <StorybookForm error>
+    <SelectField {...props} required />
+  </StorybookForm>
+)
+
+Error.story = {
+  name: 'error',
+}

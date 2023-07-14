@@ -1,12 +1,23 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { RequiredSymbol } from './RequiredSymbol'
 
-storiesOf('common/RequiredSymbol', module)
-  .add('symbol', () => <RequiredSymbol />)
-  .add('symbol with text (m)', () => (
-    <>
-      text
-      <RequiredSymbol />
-    </>
-  ))
+export default {
+  title: 'common/RequiredSymbol',
+}
+
+export const Symbol = () => <RequiredSymbol />
+
+Symbol.story = {
+  name: 'symbol',
+}
+
+export const SymbolWithTextM = () => (
+  <>
+    text
+    <RequiredSymbol />
+  </>
+)
+
+SymbolWithTextM.story = {
+  name: 'symbol with text (m)',
+}

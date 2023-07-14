@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { ToastNotifications } from './ToastNotifications'
 import { Toast } from './Toast'
@@ -17,30 +16,46 @@ const uuids = [
   'c2380e01-1384-4daf-8954-ea81cabdab44',
 ]
 
-storiesOf('common/ToastNotification', module)
-  // .addDecorator(host({ width: 500, height: 500 }))
-  .add('all toasts (m)', () => (
-    <>
-      <Toast type="danger" text="danger toast" />
-      <Toast type="info" text="info toast" />
-      <Toast type="success" text="success toast" />
-      <Toast type="warning" text="warning toast" />
-    </>
-  ))
-  .add('Toast with long text', () => (
-    <Toast
-      type="info"
-      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    />
-  ))
-  .add('toast notifications', () => (
-    <ToastNotifications
-      toasts={[
-        { uuid: uuids[0], type: 'danger', text: 'danger toast' },
-        { uuid: uuids[1], type: 'info', text: 'info toast' },
-        { uuid: uuids[2], type: 'success', text: 'success toast' },
-        { uuid: uuids[3], type: 'warning', text: 'warning toast' },
-      ]}
-      onClose={action('onClose')}
-    ></ToastNotifications>
-  ))
+export default {
+  title: 'common/ToastNotification',
+}
+
+export const AllToastsM = () => (
+  <>
+    <Toast type="danger" text="danger toast" />
+    <Toast type="info" text="info toast" />
+    <Toast type="success" text="success toast" />
+    <Toast type="warning" text="warning toast" />
+  </>
+)
+
+AllToastsM.story = {
+  name: 'all toasts (m)',
+}
+
+export const ToastWithLongText = () => (
+  <Toast
+    type="info"
+    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  />
+)
+
+ToastWithLongText.story = {
+  name: 'Toast with long text',
+}
+
+export const _ToastNotifications = () => (
+  <ToastNotifications
+    toasts={[
+      { uuid: uuids[0], type: 'danger', text: 'danger toast' },
+      { uuid: uuids[1], type: 'info', text: 'info toast' },
+      { uuid: uuids[2], type: 'success', text: 'success toast' },
+      { uuid: uuids[3], type: 'warning', text: 'warning toast' },
+    ]}
+    onClose={action('onClose')}
+  ></ToastNotifications>
+)
+
+_ToastNotifications.story = {
+  name: 'toast notifications',
+}
